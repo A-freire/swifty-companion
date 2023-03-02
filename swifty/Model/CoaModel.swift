@@ -4,6 +4,7 @@
 //
 //  Created by Adrien Freire Eleuterio on 01/03/2023.
 //
+// swiftlint:disable identifier_name
 
 import Foundation
 
@@ -14,7 +15,7 @@ class Coa {
     let imageUrl: String
     let coverUrl: String
     let color: String
-    
+
     init(data: CoaResponse) {
         self.id = data.id
         self.name = data.name
@@ -33,10 +34,6 @@ class Coa {
         self.color = ""
     }
 }
-
-//class CoaResponses: Codable {
-//    let data: [CoaResponse]
-//}
 
 class CoaResponse: Codable {
     let id: Int

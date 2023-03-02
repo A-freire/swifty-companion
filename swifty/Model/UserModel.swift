@@ -4,6 +4,7 @@
 //
 //  Created by Adrien Freire Eleuterio on 28/02/2023.
 //
+// swiftlint:disable identifier_name
 
 import Foundation
 
@@ -54,7 +55,7 @@ class User {
 
     func getBlackholeState() -> BlackHoleState {
         if let last = cursusUsers.last {
-            if (last.blackholed_at != nil) {
+            if last.blackholed_at != nil {
                 let dateFormat = DateFormatter()
                 dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 if let blackholeTime = getBlackHoleTime() {
@@ -68,9 +69,10 @@ class User {
 
     func getBlackHoleTime() -> Int? {
         if let last = cursusUsers.last {
-            if (last.blackholed_at != nil) {
+            if last.blackholed_at != nil {
                 let dateFormat = DateFormatter()
                 dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+// swiftlint:disable:next line_length
                 return Int(((dateFormat.date(from: last.blackholed_at!)?.millisecondSince1978 ?? 0) - Date.now.millisecondSince1978) / 86400000)
             }
             return 0
@@ -81,9 +83,9 @@ class User {
     func getTitle() -> String {
         var log: String = login
         titlesUsers.forEach { title in
-            if (title.selected == true) {
+            if title.selected == true {
                 titles.forEach { tid in
-                    if (tid.id == title.title_id) {
+                    if tid.id == title.title_id {
                         log = tid.name.replacingOccurrences(of: "%login", with: login)
                     }
                 }
@@ -95,7 +97,7 @@ class User {
     func getOnGoingProject() -> [String] {
         var projectName: [String] = []
         projectsUsers.forEach { project in
-            if (project.status == "in_progress" || project.status == "waiting_for_correction") {
+            if project.status == "in_progress" || project.status == "waiting_for_correction" {
                 projectName.append(project.project.name)
             }
         }
@@ -108,10 +110,14 @@ class User {
             if project.status == "finished" {
                 if cursusUsers.last?.grade == "Learner" || cursusUsers.last?.grade == "Member" {
                     if project.cursus_ids[0] == 21 {
-                        projectValidated.append(FinishedProject(name: project.project.name, mark: project.final_mark ?? 0, time: project.marked_at ?? ""))
+                        projectValidated.append(FinishedProject(name: project.project.name,
+                                                                mark: project.final_mark ?? 0,
+                                                                time: project.marked_at ?? ""))
                     }
                 } else if cursusUsers.last?.grade == nil {
-                    projectValidated.append(FinishedProject(name: project.project.name, mark: project.final_mark ?? 0, time: project.marked_at ?? ""))
+                    projectValidated.append(FinishedProject(name: project.project.name,
+                                                            mark: project.final_mark ?? 0,
+                                                            time: project.marked_at ?? ""))
                 }
             }
         }
@@ -194,4 +200,3 @@ struct Achievement: Codable, Hashable {
         return URL(string: BASE_URL+image)!
     }
 }
-

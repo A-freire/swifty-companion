@@ -18,7 +18,7 @@ struct UserAchievementView: View {
 
     var allAchievements: [Achievement] {
         var tab: [Achievement] = []
-        
+
         sortedListAchievement.forEach { data in
             achievements.forEach { achi in
                 if data.achievement_id == achi.id {
@@ -62,14 +62,14 @@ struct AllAchievementsCardView: View {
                     ForEach(chunk, id: \.self) { achievement in
                         VStack {
                             WebImage(url: achievement.getImageURL(),
-                                     context: [.imageThumbnailPixelSize : CGSize.zero])
+                                     context: [.imageThumbnailPixelSize: CGSize.zero])
                                 .resizable()
                                 .frame(width: 80, height: achievement.kind == "scolarity" ? 100 : 80)
                                 .onTapGesture {
                                     showAchievement = true
                                     focus = achievement
                                 }
-                                
+
                             Text(achievement.name)
                                 .lineLimit(4)
                                 .multilineTextAlignment(.center)
@@ -99,7 +99,7 @@ struct AchievementsCardView: View {
                 ForEach(achievements.prefix(3), id: \.self) { achievement in
                     VStack {
                         WebImage(url: achievement.getImageURL(),
-                                 context: [.imageThumbnailPixelSize : CGSize.zero])
+                                 context: [.imageThumbnailPixelSize: CGSize.zero])
                             .resizable()
                             .frame(width: 80, height: achievement.kind == "scolarity" ? 100 : 80)
                         Text(achievement.name)
@@ -114,7 +114,6 @@ struct AchievementsCardView: View {
     }
 }
 
-
 struct AchievememtDetailView: View {
     @Binding var focus: Achievement?
     var body: some View {
@@ -124,13 +123,6 @@ struct AchievememtDetailView: View {
                 WebImage(url: achievement.getImageURL(), isAnimating: .constant(true))
                     .resizable()
                     .frame(width: 240, height: achievement.kind == "scolarity" ? 300 : 240)
-                //                .offset(y: cos(Date().timeIntervalSince1970) * 20)
-                //                .animation(Animation.linear(duration: 1.5).repeatForever(autoreverses: true))
-                //                .rotationEffect(Angle(degrees: 360))
-                //                .animation(Animation.easeIn(duration: 2))
-                //                .scaleEffect(1.2)
-                //                .animation(
-                //                    Animation.interpolatingSpring(mass: 0.1, stiffness: 10, damping: 5, initialVelocity: 5).repeatForever(autoreverses: true))
                 Rectangle()
                     .background(Color.clear)
                     .foregroundColor(.clear)

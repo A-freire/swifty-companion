@@ -26,11 +26,11 @@ struct TokenAPIView: View {
             Button(action: {
                 isLoading = true
                 UserDefaults.standard.set(uid, forKey: "uid")
-                UserDefaults.standard.set(secret, forKey: "secret")  
+                UserDefaults.standard.set(secret, forKey: "secret")
                 CredManager.shared.connexion { _ in
                 } onSucces: {
                     isLoading = false
-                    showSearch = true                 
+                    showSearch = true
                     print("let's go")
                 } onError: { error in
                     print(error)
@@ -50,7 +50,8 @@ struct TokenAPIView: View {
         .overlay {
             if isLoading == true {
                 VStack {
-                    LottieView(name: colorScheme == .dark ? "loading-files-black" : "loading-files-white", loopMode: .loop)
+                    LottieView(name: colorScheme == .dark ? "loading-files-black" : "loading-files-white",
+                               loopMode: .loop)
                         .scaledToFill()
                 }
                 .frame(height: 1000)

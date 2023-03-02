@@ -29,30 +29,28 @@ class CredManager {
                 }
             } receiveValue: { cred in
                 UserDefaults.standard.set(cred.access_token, forKey: "access_token")
-                UserDefaults.standard.set(Date().addingTimeInterval(TimeInterval(cred.expires_in)), forKey: "expiration")
+                UserDefaults.standard.set(Date().addingTimeInterval(TimeInterval(cred.expires_in)),
+                                          forKey: "expiration")
                 onSucces()
             }
             .store(in: &cancellables)
     }
 
     func checkCred() {
-        if Date() > UserDefaults.standard.object(forKey: "expiration") as! Date {
+        if Date() > UserDefaults.standard.object(forKey: "expiration") as? Date ?? Date() {
             UserServices.shared.getCred()
                 .sink { completion in
                     switch completion {
                     case .failure:
                         print("error dans checkCred")
-//                        onLoading(false)
-//                        onError("Error in connexion")
                     case .finished:
                         print("finish")
-//                        onLoading(false)
                     }
                 } receiveValue: { cred in
                     print("change cred")
                     UserDefaults.standard.set(cred.access_token, forKey: "access_token")
-                    UserDefaults.standard.set(Date().addingTimeInterval(TimeInterval(cred.expires_in)), forKey: "expiration")
-//                    onSucces()
+                    UserDefaults.standard.set(Date().addingTimeInterval(TimeInterval(cred.expires_in)),
+                                              forKey: "expiration")
                 }
                 .store(in: &cancellables)
         }

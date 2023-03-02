@@ -65,13 +65,13 @@ struct FinishedProjectCardView: View {
     func timeAgoSinceDate(dateBrut: String) -> String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        
+
         if let date = formatter.date(from: dateBrut) {
             let calendar = Calendar.current
             let flags: Set<Calendar.Component> = [.second, .minute, .hour, .day, .weekOfYear, .month, .year]
             let now = Date()
             let components = calendar.dateComponents(flags, from: date, to: now)
-            
+
             if let year = components.year, year >= 1 {
                 return year == 1 ? "a year ago" : "\(year) years ago"
             } else if let month = components.month, month >= 1 {

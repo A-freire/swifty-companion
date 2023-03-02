@@ -43,7 +43,7 @@ struct UserSearchView: View {
                         historique(login: user.login, image: user.image)
                     } onError: { error in
                         generator.notificationOccurred(.error)
-                        isError = true          
+                        isError = true
                         print("Error")
                     }
                 } label: {
@@ -110,7 +110,7 @@ struct HistoriqueView: View {
 struct HistoriqueCardView: View {
     @Binding var showUser: Bool
     @Binding var user: User?
-    var list: [String : String]
+    var list: [String: String]
 
     var body: some View {
         ForEach(Array(list), id: \.key) { key, value in
@@ -135,7 +135,7 @@ struct HistoriqueCardView: View {
                     self.user = user
                     showUser = true
                 } onError: { error in
-                    print("Error")
+                    print(error)
                 }
             }
         }

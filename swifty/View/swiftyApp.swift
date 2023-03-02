@@ -10,7 +10,7 @@ import SDWebImage
 import SDWebImageSVGCoder
 
 @main
-struct swiftyApp: App {
+struct SwiftyApp: App {
 
     init() {
         setUpDependencies() // Initialize SVGCoder
@@ -24,7 +24,7 @@ struct swiftyApp: App {
     }
 }
 // Initialize SVGCoder
-private extension swiftyApp {
+private extension SwiftyApp {
 
     func setUpDependencies() {
         SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)

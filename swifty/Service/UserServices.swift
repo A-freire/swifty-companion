@@ -32,8 +32,10 @@ class UserServices {
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         requestBodyComponents.queryItems = [URLQueryItem(name: "grant_type", value: "client_credentials"),
-                                            URLQueryItem(name: "client_id", value: UserDefaults.standard.string(forKey: "uid") ?? ""),
-                                            URLQueryItem(name: "client_secret", value: UserDefaults.standard.string(forKey: "secret") ?? "")]
+                                            URLQueryItem(name: "client_id",
+                                                         value: UserDefaults.standard.string(forKey: "uid") ?? ""),
+                                            URLQueryItem(name: "client_secret",
+                                                         value: UserDefaults.standard.string(forKey: "secret") ?? "")]
         request.httpBody = requestBodyComponents.query?.data(using: .utf8)
         return request
     }
@@ -56,7 +58,8 @@ class UserServices {
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue( "Bearer \(UserDefaults.standard.string(forKey: "access_token") ?? "")", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "access_token") ?? "")",
+                          forHTTPHeaderField: "Authorization")
         return request
     }
 
@@ -94,7 +97,8 @@ class UserServices {
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue( "Bearer \(UserDefaults.standard.string(forKey: "access_token") ?? "")", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "access_token") ?? "")",
+                         forHTTPHeaderField: "Authorization")
         return request
     }
 
@@ -113,15 +117,17 @@ class UserServices {
     }
 
     func prepareGetUserAchievements(userId: Int) -> URLRequest {
+// swiftlint:disable:next line_length
         let url = URL(string: BASE_URL + "/v2/achievements_users?filter%5Buser_id%5D=\(userId)&sort=-updated_at&page%5Bsize%5D=100")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue( "Bearer \(UserDefaults.standard.string(forKey: "access_token") ?? "")", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "access_token") ?? "")",
+                         forHTTPHeaderField: "Authorization")
         return request
     }
-    
+
     func checkerror(userId: Int) -> AnyPublisher<Int, URLSession.DataTaskPublisher.Failure> {
             let url = prepareGetUserAchievements(userId: userId)
             return URLSession.shared.dataTaskPublisher(for: url)

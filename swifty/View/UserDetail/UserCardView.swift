@@ -90,7 +90,7 @@ struct LevelBar: View {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(hex: color).opacity(0.5))
-                    .frame(width: proxy.size.width , height: 25)
+                    .frame(width: proxy.size.width, height: 25)
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(hex: color))
                     .frame(width: proxy.size.width * sizeProgressBar, height: 25)

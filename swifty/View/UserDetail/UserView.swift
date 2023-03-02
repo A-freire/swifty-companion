@@ -37,7 +37,9 @@ struct UserView: View {
                         .padding(.bottom)
                     UserSkillsView(projects: user.getSkills())
                         .padding(.bottom)
-                    UserAchievementView(userId: user.id, achievements: user.achievements, sortedListAchievement: $sortedListAchievement)
+                    UserAchievementView(userId: user.id,
+                                        achievements: user.achievements,
+                                        sortedListAchievement: $sortedListAchievement)
                         .padding(.bottom)
                 }
             }
