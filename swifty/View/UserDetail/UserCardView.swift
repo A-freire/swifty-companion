@@ -64,6 +64,7 @@ struct UserCardView: View {
 
 struct GroupsView: View {
     let groups: [Groups]
+
     var body: some View {
         HStack {
             ForEach(groups, id: \.self) { group in
@@ -76,10 +77,12 @@ struct GroupsView: View {
 struct LevelBar: View {
     let level: Double
     @Binding var color: String
+
     var sizeProgressBar: CGFloat {
         return CGFloat(level.truncatingRemainder(dividingBy: 1))
         // getLevel > Double % 1 > CGFloat
     }
+
     var displayLevel: String {
         return "Level \(Int(level)) - \(Int(sizeProgressBar * 100))%"
         // "Level XX - XX%"
@@ -90,21 +93,22 @@ struct LevelBar: View {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(hex: color).opacity(0.5))
-                    .frame(width: proxy.size.width, height: 25)
+                    .frame(width: proxy.size.width, height: 24)
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color(hex: color))
-                    .frame(width: proxy.size.width * sizeProgressBar, height: 25)
+                    .frame(width: proxy.size.width * sizeProgressBar, height: 24)
                 Text(displayLevel)
-                    .frame(width: proxy.size.width, height: 25)
+                    .frame(width: proxy.size.width, height: 24)
             }
         }
-        .frame(height: 25)
+        .frame(height: 24)
     }
 }
 
 struct BlackHole: View {
     let state: BlackHoleState
     let timer: Int
+
     var message: String? {
         switch state {
         case .learner:
@@ -117,27 +121,19 @@ struct BlackHole: View {
     }
 
     var body: some View {
-        BlackholeTimer(blackholeTime: timer, message: message)
-    }
-}
-
-struct BlackholeTimer: View {
-    let blackholeTime: Int
-    let message: String?
-    var body: some View {
         VStack {
-            if let message = message {
-                if message != "" {
-                    Text(message)
+            if let msg = message {
+                if msg != "" {
+                    Text(msg)
                         .multilineTextAlignment(.center)
-                        .font(.system(size: 22))
+                        .font(.system(size: 21))
                 }
             } else {
                 Text("Black Hole absorption")
-                    .font(.system(size: 20))
-                Text(String(blackholeTime) + " days left")
+                    .font(.system(size: 21))
+                Text("\(timer) days left")
                     .bold()
-                    .font(.system(size: 23))
+                    .font(.system(size: 24))
             }
         }
     }

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct UserSkillsView: View {
-    let projects: [Skills]
     @State var showAll: Bool = false
+    let projects: [Skills]
+
     var body: some View {
         VStack {
             HStack {
@@ -36,6 +37,7 @@ struct UserSkillsView: View {
 
 struct AllSkillsCardView: View {
     let projects: [Skills]
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(projects, id: \.self) { project in
@@ -49,6 +51,7 @@ struct AllSkillsCardView: View {
 
 struct SkillsCardView: View {
     let project: Skills
+
     var body: some View {
         ZStack {
             Color.gray

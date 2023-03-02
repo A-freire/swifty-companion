@@ -27,14 +27,12 @@ struct TokenAPIView: View {
                 isLoading = true
                 UserDefaults.standard.set(uid, forKey: "uid")
                 UserDefaults.standard.set(secret, forKey: "secret")
-                CredManager.shared.connexion { _ in
+                CredManager.shared.connexion { loading in
+                    isLoading = loading
                 } onSucces: {
-                    isLoading = false
                     showSearch = true
-                    print("let's go")
                 } onError: { error in
                     print(error)
-                    isLoading = false
                 }
             }, label: {
                 Text("Connexion")

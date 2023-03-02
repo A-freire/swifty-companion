@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC2EB32829B14CE1003F0362 /* HistoriqueUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2EB32729B14CE1003F0362 /* HistoriqueUsersView.swift */; };
 		FC3E7B5F29ACE7D500ED3A70 /* swiftyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */; };
 		FC3E7B6329ACE7D700ED3A70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC3E7B6229ACE7D700ED3A70 /* Assets.xcassets */; };
 		FC3E7B6629ACE7D700ED3A70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC3E7B6529ACE7D700ED3A70 /* Preview Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC2EB32729B14CE1003F0362 /* HistoriqueUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriqueUsersView.swift; sourceTree = "<group>"; };
 		FC3E7B5B29ACE7D500ED3A70 /* swifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftyApp.swift; sourceTree = "<group>"; };
 		FC3E7B6229ACE7D700ED3A70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC2EB32629B14CBB003F0362 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				FC3E7B8D29ACEC8B00ED3A70 /* UserSearchView.swift */,
+				FC2EB32729B14CE1003F0362 /* HistoriqueUsersView.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
 		FC3E7B5229ACE7D500ED3A70 = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +136,7 @@
 			children = (
 				FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */,
 				FC3E7B8829ACE9CC00ED3A70 /* TokenAPIView.swift */,
-				FC3E7B8D29ACEC8B00ED3A70 /* UserSearchView.swift */,
+				FC2EB32629B14CBB003F0362 /* SearchView */,
 				FC3E7BB129AE949600ED3A70 /* UserDetail */,
 			);
 			path = View;
@@ -305,6 +316,7 @@
 				FC3E7BBE29AFC3F300ED3A70 /* CoaModel.swift in Sources */,
 				FC3E7B9A29AD1BB500ED3A70 /* Constante.swift in Sources */,
 				FC3E7BB029AE855200ED3A70 /* UserManager.swift in Sources */,
+				FC2EB32829B14CE1003F0362 /* HistoriqueUsersView.swift in Sources */,
 				FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */,
 				FCE81FCA29B00CA400D9F330 /* AchievementDataModel.swift in Sources */,
 				FC3E7BB829AEBD7400ED3A70 /* UserOnGoingProjectView.swift in Sources */,

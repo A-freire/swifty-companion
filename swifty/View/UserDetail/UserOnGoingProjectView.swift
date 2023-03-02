@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct UserOnGoingProjectView: View {
-    let projects: [String]
     @State var showAll: Bool = false
+    let projects: [String]
+
     var body: some View {
         VStack {
             HStack {
@@ -36,6 +37,7 @@ struct UserOnGoingProjectView: View {
 
 struct AllOnGoingProjectCardView: View {
     let projects: [String]
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(projects, id: \.self) { name in
@@ -49,6 +51,7 @@ struct AllOnGoingProjectCardView: View {
 
 struct OnGoingProjectCardView: View {
     let name: String
+
     var body: some View {
         ZStack {
             Color.gray

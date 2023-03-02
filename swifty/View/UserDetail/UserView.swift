@@ -30,7 +30,7 @@ struct UserView: View {
                                  timer: user.getBlackHoleTime() ?? 0,
                                  showPicture: $showPicture,
                                  login: user.login)
-                    .padding(.bottom)
+                        .padding(.bottom)
                     UserOnGoingProjectView(projects: user.getOnGoingProject())
                         .padding(.bottom)
                     UserFinishedProjectsView(projects: user.getFinishedProject())
@@ -40,7 +40,6 @@ struct UserView: View {
                     UserAchievementView(userId: user.id,
                                         achievements: user.achievements,
                                         sortedListAchievement: $sortedListAchievement)
-                        .padding(.bottom)
                 }
             }
             .onReceive(timer, perform: { _ in
@@ -53,23 +52,7 @@ struct UserView: View {
             .padding(.horizontal)
             .overlay {
                 if showPicture == true {
-                    ZStack {
-                        Color.black
-                            .opacity(0.8)
-                            .ignoresSafeArea()
-                        VStack {
-                            KFImage(user.getUrlPicture())
-                                .resizable()
-                                .scaledToFit()
-                                .onTapGesture {
-                                    withAnimation {
-                                        showPicture = false
-                                    }
-                                }
-                            Text(user.displayName)
-                                .foregroundColor(.white)
-                        }
-                    }
+                    FocusPictureView(user: user, showPicture: $showPicture)
                 }
             }
         }
@@ -81,7 +64,6 @@ struct UserView: View {
                 isLoading = loading
             } onSucces: { color in
                 self.color = color
-//                getAchievement()
             } onError: { error in
                 print(error)
             }
@@ -98,5 +80,31 @@ struct UserView: View {
                 print(error)
             }
         }
+    }
+}
+
+struct FocusPictureView: View {
+    var user: User
+    @Binding var showPicture: Bool
+
+    var body: some View {
+        ZStack {
+            Color.black
+                .opacity(0.8)
+                .ignoresSafeArea()
+            VStack {
+                KFImage(user.getUrlPicture())
+                    .resizable()
+                    .scaledToFit()
+                    .onTapGesture {
+                        withAnimation {
+                            showPicture = false
+                        }
+                    }
+                Text(user.displayName)
+                    .foregroundColor(.white)
+            }
+        }
+
     }
 }

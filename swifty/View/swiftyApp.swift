@@ -13,8 +13,9 @@ import SDWebImageSVGCoder
 struct SwiftyApp: App {
 
     init() {
-        setUpDependencies() // Initialize SVGCoder
+        setUpDependencies()
     }
+
     var body: some Scene {
         WindowGroup {
             NavigationStack {
@@ -23,9 +24,8 @@ struct SwiftyApp: App {
         }
     }
 }
-// Initialize SVGCoder
-private extension SwiftyApp {
 
+private extension SwiftyApp {
     func setUpDependencies() {
         SDImageCodersManager.shared.addCoder(SDImageSVGCoder.shared)
     }

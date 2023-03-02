@@ -41,7 +41,6 @@ class UserManager {
                      onSucces: @escaping (String) -> Void,
                      onError: @escaping (String) -> Void) {
         onLoading(true)
-        CredManager.shared.checkCred()
         UserServices.shared.getUserCoalition(login: login)
             .sink { completion in
                 switch completion {

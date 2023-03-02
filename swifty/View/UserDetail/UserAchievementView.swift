@@ -11,9 +11,9 @@ import SDWebImage
 import SDWebImageSwiftUI
 
 struct UserAchievementView: View {
+    @State var showAll: Bool = false
     let userId: Int
     let achievements: [Achievement]
-    @State var showAll: Bool = false
     @Binding var sortedListAchievement: [AchievementData]
 
     var allAchievements: [Achievement] {
@@ -55,21 +55,20 @@ struct AllAchievementsCardView: View {
     let achievements: [Achievement]
     @State var showAchievement: Bool = false
     @State var focus: Achievement?
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(achievements.chunked(into: 3), id: \.self) { chunk in
                 HStack(spacing: 16) {
                     ForEach(chunk, id: \.self) { achievement in
                         VStack {
-                            WebImage(url: achievement.getImageURL(),
-                                     context: [.imageThumbnailPixelSize: CGSize.zero])
+                            WebImage(url: achievement.getImageURL())
                                 .resizable()
                                 .frame(width: 80, height: achievement.kind == "scolarity" ? 100 : 80)
                                 .onTapGesture {
                                     showAchievement = true
                                     focus = achievement
                                 }
-
                             Text(achievement.name)
                                 .lineLimit(4)
                                 .multilineTextAlignment(.center)
@@ -98,8 +97,7 @@ struct AchievementsCardView: View {
             HStack {
                 ForEach(achievements.prefix(3), id: \.self) { achievement in
                     VStack {
-                        WebImage(url: achievement.getImageURL(),
-                                 context: [.imageThumbnailPixelSize: CGSize.zero])
+                        WebImage(url: achievement.getImageURL())
                             .resizable()
                             .frame(width: 80, height: achievement.kind == "scolarity" ? 100 : 80)
                         Text(achievement.name)
@@ -116,11 +114,12 @@ struct AchievementsCardView: View {
 
 struct AchievememtDetailView: View {
     @Binding var focus: Achievement?
+
     var body: some View {
         if let achievement = focus {
             VStack {
                 Spacer()
-                WebImage(url: achievement.getImageURL(), isAnimating: .constant(true))
+                WebImage(url: achievement.getImageURL())
                     .resizable()
                     .frame(width: 240, height: achievement.kind == "scolarity" ? 300 : 240)
                 Rectangle()

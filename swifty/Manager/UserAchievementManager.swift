@@ -19,7 +19,6 @@ class UserAchievementManager {
                              onSucces: @escaping ([AchievementData]) -> Void,
                              onError: @escaping (String) -> Void) {
         onLoading(true)
-//        UserServices.shared.checkerror(userId: userId)
         UserServices.shared.getUserAchievements(userId: userId)
             .sink { completion in
                 switch completion {
@@ -31,8 +30,6 @@ class UserAchievementManager {
                 }
             } receiveValue: { datas in
                 onSucces(datas)
-//                print("error code = \(datas)")
-//                onSucces([])
             }
             .store(in: &cancellables)
     }
