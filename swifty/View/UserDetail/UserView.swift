@@ -42,6 +42,11 @@ struct UserView: View {
                                         sortedListAchievement: $sortedListAchievement)
                 }
             }
+            .toolbar(content: {
+                Button("intra") {
+                    UIApplication.shared.open(URL(string: "https://profile.intra.42.fr/users/" + user.login)!)
+                }
+            })
             .onReceive(timer, perform: { _ in
                 getColor()
             })
