@@ -65,6 +65,7 @@
 		FC3E7BBB29AEC78A00ED3A70 /* UserSkillsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSkillsView.swift; sourceTree = "<group>"; };
 		FC3E7BBD29AFC3F300ED3A70 /* CoaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoaModel.swift; sourceTree = "<group>"; };
 		FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementView.swift; sourceTree = "<group>"; };
+		FC9DE07B29B26F9200AF895F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FCE81FC929B00CA400D9F330 /* AchievementDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDataModel.swift; sourceTree = "<group>"; };
 		FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +113,7 @@
 		FC3E7B5D29ACE7D500ED3A70 /* swifty */ = {
 			isa = PBXGroup;
 			children = (
+				FC9DE07B29B26F9200AF895F /* Info.plist */,
 				FC3E7B9829AD1BA100ED3A70 /* Other */,
 				FC3E7B9529ACFB4000ED3A70 /* Manager */,
 				FC3E7B9229ACF83500ED3A70 /* Model */,
@@ -465,7 +467,7 @@
 				DEVELOPMENT_TEAM = 96388BF5TL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = swifty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -497,7 +499,7 @@
 				DEVELOPMENT_TEAM = 96388BF5TL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = swifty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
