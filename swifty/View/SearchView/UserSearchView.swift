@@ -21,12 +21,17 @@ struct UserSearchView: View {
     let generator = UINotificationFeedbackGenerator()
 
     var cleanLogin: String {
-        return login.lowercased().replacingOccurrences(of: " ", with: "")
+        let allowedCharacters = CharacterSet(charactersIn: "qwertyuiopasdfghjklzxcvbnm-")
+            return login.lowercased().components(separatedBy: allowedCharacters.inverted).joined(separator: "")
     }
 
     var body: some View {
         VStack {
-            HistoriqueView(histo: $histo, showUser: $showUser, user: $user)
+            if login != "" {
+                SearchUserByCampusView(showUser: $showUser, user: $user, login: $login)
+            } else {
+                HistoriqueView(histo: $histo, showUser: $showUser, user: $user)
+            }
             HStack {
                 TextField("Login", text: $login)
                     .padding(.horizontal)
@@ -34,13 +39,30 @@ struct UserSearchView: View {
                     .onChange(of: login) { _ in
                         isError = false
                     }
+                if login != "" {
+                    Button {
+                        login = ""
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                            .resizable()
+                            .frame(width: 21, height: 21)
+                            .padding(10)
+                    }
+                    .foregroundColor(.gray)
+                }
                 Button {
-                    searchUser(login: cleanLogin)
+                    getUser(login: cleanLogin)
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .resizable()
                         .frame(width: 21, height: 21)
                         .padding(10)
+                }
+                .onChange(of: showUser) { _ in
+                    guard showUser == true else {return}
+                    if let user = user {
+                        historique(login: user.login, image: user.image)
+                    }
                 }
                 .foregroundColor(isError == true ? .red : .accentColor)
             }
@@ -68,17 +90,54 @@ struct UserSearchView: View {
         }
     }
 
-    func searchUser(login: String) {
+    func getUser(login: String) {
         UserManager.shared.getUser(login: login) { _ in
         } onSucces: { user in
             generator.notificationOccurred(.success)
             self.user = user
             self.showUser = true
-            historique(login: user.login, image: user.image)
         } onError: { error in
             generator.notificationOccurred(.error)
             self.isError = true
             print("Error")
+        }
+    }
+}
+
+struct SearchUserByCampusView: View {
+    @Binding var showUser: Bool
+    @Binding var user: User?
+    @Binding var login: String
+    @State var list: [[String: String]] = []
+
+    var cleanLogin: String {
+        let allowedCharacters = CharacterSet(charactersIn: "qwertyuiopasdfghjklzxcvbnm-")
+            return login.lowercased().components(separatedBy: allowedCharacters.inverted).joined(separator: "")
+    }
+
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Sugestion")
+                    .padding([.leading])
+                Spacer()
+            }
+            ScrollView(showsIndicators: false) {
+                ForEach(Array(list), id: \.self) { list in
+                    HistoriqueCardView(showUser: $showUser, user: $user, list: list)
+                }
+            }
+            .padding(.horizontal)
+        }
+        .onChange(of: login) { _ in
+            UserManager.shared.searchUserByCampus(login: cleanLogin) { _ in
+            } onSucces: { users in
+                list = users.map({ user in
+                    [user.login: user.image]
+                })
+            } onError: { error in
+                print(error)
+            }
         }
     }
 }

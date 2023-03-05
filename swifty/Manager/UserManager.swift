@@ -57,4 +57,24 @@ class UserManager {
             }
             .store(in: &cancellables)
     }
+
+    public func searchUserByCampus(login: String,
+                                   onLoading: @escaping (Bool) -> Void,
+                                   onSucces: @escaping ([CampusUser]) -> Void,
+                                   onError: @escaping (String) -> Void ) {
+        onLoading(true)
+        UserServices.shared.searchUserbyCampus(login: login)
+            .sink { completion in
+                switch completion {
+                case .failure:
+                    onLoading(false)
+                    onError("Erreur in searchUserByCampus")
+                case .finished:
+                    onLoading(false)
+                }
+            } receiveValue: { users in
+                onSucces(users)
+            }
+            .store(in: &cancellables)
+    }
 }

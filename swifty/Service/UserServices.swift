@@ -25,7 +25,7 @@ class UserServices {
                 .eraseToAnyPublisher()
     }
 
-    func prepareGetCred() -> URLRequest {
+    private func prepareGetCred() -> URLRequest {
         let url = URL(string: BASE_URL + "/oauth/token")
         var request = URLRequest(url: url!)
         var requestBodyComponents = URLComponents()
@@ -52,7 +52,7 @@ class UserServices {
             .eraseToAnyPublisher()
     }
 
-    func prepareGetUser(login: String) -> URLRequest {
+    private func prepareGetUser(login: String) -> URLRequest {
         let url = URL(string: BASE_URL + "/v2/users/" + login)
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
@@ -91,7 +91,7 @@ class UserServices {
             .eraseToAnyPublisher()
     }
 
-    func prepareGetUserCoalition(login: String) -> URLRequest {
+    private func prepareGetUserCoalition(login: String) -> URLRequest {
         let url = URL(string: BASE_URL + "/v2/users/" + login + "/coalitions")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
@@ -116,7 +116,7 @@ class UserServices {
             .eraseToAnyPublisher()
     }
 
-    func prepareGetUserAchievements(userId: Int) -> URLRequest {
+    private func prepareGetUserAchievements(userId: Int) -> URLRequest {
 // swiftlint:disable:next line_length
         let url = URL(string: BASE_URL + "/v2/achievements_users?filter%5Buser_id%5D=\(userId)&sort=-updated_at&page%5Bsize%5D=100")
         var request = URLRequest(url: url!)
@@ -128,14 +128,39 @@ class UserServices {
         return request
     }
 
-    func checkerror(userId: Int) -> AnyPublisher<Int, URLSession.DataTaskPublisher.Failure> {
-            let url = prepareGetUserAchievements(userId: userId)
-            return URLSession.shared.dataTaskPublisher(for: url)
-                .receive(on: DispatchQueue.main)
-                .map { _, response in
-                    print(response.description)
-                    return response.getStatusCode() ?? 0
+    func searchUserbyCampus(login: String) -> AnyPublisher<[CampusUser], Error> {
+        let url = prepareSearchUserByCampus(login: login)
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .receive(on: DispatchQueue.main)
+            .map(\.data)
+            .decode(type: [CampusUserResponse].self, decoder: JSONDecoder())
+            .map({ users in
+                users.map { user in
+                    return CampusUser(data: user)
                 }
-                .eraseToAnyPublisher()
-        }
+            })
+            .eraseToAnyPublisher()
+    }
+
+    private func prepareSearchUserByCampus(login: String) -> URLRequest {
+        let url = URL(string: BASE_URL + "/v2/campus/1/users?range%5Blogin%5D=\(login),\(login)z")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "access_token") ?? "")",
+                         forHTTPHeaderField: "Authorization")
+        return request
+    }
+
+    func checkerror(userId: Int) -> AnyPublisher<Int, URLSession.DataTaskPublisher.Failure> {
+        let url = prepareGetUserAchievements(userId: userId)
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .receive(on: DispatchQueue.main)
+            .map { _, response in
+                print(response.description)
+                return response.getStatusCode() ?? 0
+            }
+            .eraseToAnyPublisher()
+    }
 }

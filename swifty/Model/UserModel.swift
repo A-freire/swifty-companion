@@ -25,7 +25,7 @@ class User {
         self.id = data.id
         self.login = data.login
         self.displayName = data.displayname
-        self.image = data.image.link
+        self.image = data.image.link ?? "https://cdn.intra.42.fr/users/430b2acd1bcfedf5475654d235003086/norminet.jpeg"
         self.location = data.location
         self.cursusUsers = data.cursus_users
         self.groups = data.groups
@@ -36,6 +36,9 @@ class User {
     }
 
     func getUrlPicture() -> URL {
+        if image == "https://cdn.intra.42.fr/users/78999b974389f4c1370718e6c4eb0512/3b3.jpg" {
+            return URL(string: "https://cdn.intra.42.fr/users/430b2acd1bcfedf5475654d235003086/norminet.jpeg")!
+        }
         return URL(string: image)!
     }
 
@@ -140,7 +143,7 @@ struct UserResponse: Codable {
 }
 
 struct ProfilePicture: Codable {
-    let link: String
+    let link: String?
 }
 
 struct CursusUsers: Codable {
