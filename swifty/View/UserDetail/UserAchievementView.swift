@@ -46,7 +46,9 @@ struct UserAchievementView: View {
                     }
                 }
             }
-            AchievementsCardView(achievements: allAchievements)
+            if allAchievements.isEmpty {
+                AchievementsCardView(achievements: allAchievements)
+            }
         }
     }
 }

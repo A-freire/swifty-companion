@@ -14,6 +14,7 @@ struct UserView: View {
     @State var color: String = "#FFFFFF"
     @State var sortedListAchievement: [AchievementData] = []
     @State var isLoading: Bool = false
+    @State var errorCount: Int = 0
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -64,13 +65,14 @@ struct UserView: View {
     }
 
     func getColor() {
-        if color == "#FFFFFF" && isLoading == false {
+        if color == "#FFFFFF" && isLoading == false && errorCount < 5 {
             UserManager.shared.getColorCoa(login: user?.login ?? "") { loading in
                 isLoading = loading
             } onSucces: { color in
                 self.color = color
             } onError: { error in
                 print(error)
+                errorCount += 1
             }
         }
     }
