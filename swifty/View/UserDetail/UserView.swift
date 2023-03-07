@@ -37,7 +37,7 @@ struct UserView: View {
                         .padding(.bottom)
                     UserFinishedProjectsView(projects: user.getFinishedProject())
                         .padding(.bottom)
-                    UserSkillsView(projects: user.getSkills())
+                    UserSkillsView(projects: user.getSkills(), color: $color)
                         .padding(.bottom)
                     UserAchievementView(userId: user.id,
                                         achievements: user.achievements,

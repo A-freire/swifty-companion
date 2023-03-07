@@ -10,6 +10,7 @@ import SwiftUI
 struct UserSkillsView: View {
     @State var showAll: Bool = false
     let projects: [Skills]
+    @Binding var color: String
 
     var body: some View {
         VStack {
@@ -24,7 +25,7 @@ struct UserSkillsView: View {
                         Text("See all projects")
                     }
                     .navigationDestination(isPresented: $showAll) {
-                        AllSkillsCardView(projects: projects)
+                        AllSkillsCardView(projects: projects, color: $color)
                     }
                 }
             }
@@ -37,11 +38,12 @@ struct UserSkillsView: View {
 
 struct AllSkillsCardView: View {
     let projects: [Skills]
+    @Binding var color: String
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(projects, id: \.self) { project in
-                SkillsCardView(project: project)
+                SkillsCardLevelView(project: project, color: $color)
             }
         }
         .navigationTitle("Skills")
@@ -59,7 +61,24 @@ struct SkillsCardView: View {
             HStack {
                 Text(project.name)
                 Spacer()
-                Text(project.level.formated2Decimal())
+                Text("lvl \(Int(project.level))")
+            }
+            .padding(10)
+        }
+    }
+}
+
+struct SkillsCardLevelView: View {
+    let project: Skills
+    @Binding var color: String
+
+    var body: some View {
+        ZStack {
+            Color.gray
+                .cornerRadius(15)
+            VStack {
+                Text(project.name)
+                LevelBar(level: project.level, color: $color)
             }
             .padding(10)
         }

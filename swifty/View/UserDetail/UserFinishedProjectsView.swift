@@ -60,6 +60,15 @@ struct FinishedProjectCardView: View {
                 Text(project.name + " - " + project.time.timeAgoSinceDate())
                 Spacer()
                 Text("\(project.mark)")
+                    .foregroundColor(project.mark >= 100 ? Color(hex: "#60d56b") : Color(hex: "#e4000f"))
+                // true
+                // 60d56b = chat gpt
+                // ffff00 = yellow
+                // 4BB543 = success green
+                // false
+                // EE4B2B = Dark Candy Apple Red
+                // f93822 = pentone bright red
+                // e4000f = nintendo red
             }
             .padding(10)
         }
