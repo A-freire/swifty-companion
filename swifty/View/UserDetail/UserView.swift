@@ -15,7 +15,7 @@ struct UserView: View {
     @State var sortedListAchievement: [AchievementData] = []
     @State var isLoading: Bool = false
     @State var errorCount: Int = 0
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
 
     var body: some View {
         if let user = user {

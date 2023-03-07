@@ -83,7 +83,7 @@ struct PlaceView: View {
                 .font(.callout)
                 .bold()
         } else {
-            Text("Last seen:")
+            Text("Last activity:")
                 .font(.callout)
                 .bold()
             Text(lastActivity.timeAgoSinceDate())
