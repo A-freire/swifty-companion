@@ -24,7 +24,6 @@ class UserManager {
             .sink { completion in
                 switch completion {
                 case .failure:
-                    print("Error")
                     onLoading(false)
                     onError("Erreur dans le getUser")
                 case .finished:
@@ -45,11 +44,9 @@ class UserManager {
             .sink { completion in
                 switch completion {
                 case .failure:
-                    print("Error")
                     onLoading(false)
                     onError("Erreur dans le getColorCoa")
                 case .finished:
-                    print("Finished")
                     onLoading(false)
                 }
             } receiveValue: { coa in

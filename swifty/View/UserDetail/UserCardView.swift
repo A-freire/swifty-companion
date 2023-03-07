@@ -13,7 +13,8 @@ struct UserCardView: View {
     let imageUrl: URL
     let groups: [Groups]
     let title: String
-    let place: String
+    let place: String?
+    let lastActivity: String
     let level: Double
     let state: BlackHoleState
     let timer: Int
@@ -46,9 +47,7 @@ struct UserCardView: View {
                             .bold()
                             .multilineTextAlignment(.center)
                         Spacer()
-                        Text(place)
-                            .font(.callout)
-                            .bold()
+                        PlaceView(place: place, lastActivity: lastActivity)
                         Spacer()
                     }
                     Spacer()
@@ -70,6 +69,26 @@ struct GroupsView: View {
             ForEach(groups, id: \.self) { group in
                 Text("\(group.name.capitalized)")
             }
+        }
+    }
+}
+
+struct PlaceView: View {
+    let place: String?
+    let lastActivity: String
+
+    var body: some View {
+        if let place = place {
+            Text(place)
+                .font(.callout)
+                .bold()
+        } else {
+            Text("Last seen:")
+                .font(.callout)
+                .bold()
+            Text(lastActivity.timeAgoSinceDate())
+                .font(.callout)
+                .bold()
         }
     }
 }

@@ -20,6 +20,7 @@ class User {
     let titlesUsers: [TitlesUsers]
     let projectsUsers: [ProjectUsers]
     let achievements: [Achievement]
+    let updated_at: String
 
     init(data: UserResponse) {
         self.id = data.id
@@ -33,6 +34,7 @@ class User {
         self.titlesUsers = data.titles_users
         self.projectsUsers = data.projects_users
         self.achievements = data.achievements
+        self.updated_at = data.updated_at
     }
 
     func getUrlPicture() -> URL {
@@ -140,6 +142,7 @@ struct UserResponse: Codable {
     let titles_users: [TitlesUsers]
     let projects_users: [ProjectUsers]
     let achievements: [Achievement]
+    let updated_at: String
 }
 
 struct ProfilePicture: Codable {

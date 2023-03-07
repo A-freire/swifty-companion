@@ -99,7 +99,7 @@ struct UserSearchView: View {
         } onError: { error in
             generator.notificationOccurred(.error)
             self.isError = true
-            print("Error")
+            print(error)
         }
     }
 }
