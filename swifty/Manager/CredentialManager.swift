@@ -36,12 +36,14 @@ class CredManager {
             .store(in: &cancellables)
     }
 
-    func checkCred() {
-        if Date() > UserDefaults.standard.object(forKey: "expiration") as? Date ?? Date() {
+    func checkCred(onSucces: @escaping () -> Void,
+                   onError: @escaping (String) -> Void) {
+        if Date() >= UserDefaults.standard.object(forKey: "expiration") as? Date ?? Date() {
             UserServices.shared.getCred()
                 .sink { completion in
                     switch completion {
                     case .failure:
+                        onError("error dans checkCred")
                         print("error dans checkCred")
                     case .finished:
                         print("finish")
@@ -51,9 +53,11 @@ class CredManager {
                     UserDefaults.standard.set(cred.access_token, forKey: "access_token")
                     UserDefaults.standard.set(Date().addingTimeInterval(TimeInterval(cred.expires_in)),
                                               forKey: "expiration")
+                    onSucces()
                 }
                 .store(in: &cancellables)
         }
+        onSucces()
     }
 
 }

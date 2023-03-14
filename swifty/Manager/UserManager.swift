@@ -19,20 +19,23 @@ class UserManager {
                  onSucces: @escaping (User) -> Void,
                  onError: @escaping (String) -> Void) {
         onLoading(true)
-        CredManager.shared.checkCred()
-        UserServices.shared.getUser(login: login)
-            .sink { completion in
-                switch completion {
-                case .failure:
-                    onLoading(false)
-                    onError("Erreur dans le getUser")
-                case .finished:
-                    onLoading(false)
+        CredManager.shared.checkCred {
+            UserServices.shared.getUser(login: login)
+                .sink { completion in
+                    switch completion {
+                    case .failure:
+                        onLoading(false)
+                        onError("Erreur dans le getUser")
+                    case .finished:
+                        onLoading(false)
+                    }
+                } receiveValue: { user in
+                    onSucces(user)
                 }
-            } receiveValue: { user in
-                onSucces(user)
-            }
-            .store(in: &cancellables)
+                .store(in: &self.cancellables)
+        } onError: { error in
+            onError(error)
+        }
     }
 
     func getColorCoa(login: String,

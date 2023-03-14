@@ -15,7 +15,7 @@ struct UserView: View {
     @State var sortedListAchievement: [AchievementData] = []
     @State var isLoading: Bool = false
     @State var errorCount: Int = 0
-    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         if let user = user {
@@ -50,10 +50,12 @@ struct UserView: View {
                 }
             })
             .onReceive(timer, perform: { _ in
+                getAchievement()
                 getColor()
             })
             .onAppear(perform: {
                 getAchievement()
+                getColor()
             })
             .navigationTitle(user.login)
             .padding(.horizontal)
@@ -71,6 +73,7 @@ struct UserView: View {
                 isLoading = loading
             } onSucces: { color in
                 self.color = color
+                errorCount = 0
             } onError: { error in
                 print(error)
                 errorCount += 1
@@ -79,13 +82,15 @@ struct UserView: View {
     }
 
     func getAchievement() {
-        if sortedListAchievement.isEmpty {
-            UserAchievementManager.shared.getAchievementsList(userId: user?.id ?? 0) { _ in
+        if sortedListAchievement.isEmpty && isLoading == false && errorCount < 5 {
+            UserAchievementManager.shared.getAchievementsList(userId: user?.id ?? 0) { loading in
+                isLoading = loading
             } onSucces: { datas in
                 self.sortedListAchievement = datas
-                getColor()
+                errorCount = 0
             } onError: { error in
                 print(error)
+                errorCount += 1
             }
         }
     }
