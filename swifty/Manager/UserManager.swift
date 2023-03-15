@@ -63,18 +63,22 @@ class UserManager {
                                    onSucces: @escaping ([CampusUser]) -> Void,
                                    onError: @escaping (String) -> Void ) {
         onLoading(true)
-        UserServices.shared.searchUserbyCampus(login: login)
-            .sink { completion in
-                switch completion {
-                case .failure:
-                    onLoading(false)
-                    onError("Erreur in searchUserByCampus")
-                case .finished:
-                    onLoading(false)
+        CredManager.shared.checkCred {
+            UserServices.shared.searchUserbyCampus(login: login)
+                .sink { completion in
+                    switch completion {
+                    case .failure:
+                        onLoading(false)
+                        onError("Erreur in searchUserByCampus")
+                    case .finished:
+                        onLoading(false)
+                    }
+                } receiveValue: { users in
+                    onSucces(users)
                 }
-            } receiveValue: { users in
-                onSucces(users)
-            }
-            .store(in: &cancellables)
+                .store(in: &self.cancellables)
+        } onError: { error in
+            onError(error)
+        }
     }
 }
