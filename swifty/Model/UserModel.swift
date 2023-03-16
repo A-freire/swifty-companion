@@ -114,7 +114,7 @@ class User {
         projectsUsers.forEach { project in
             if project.status == "finished" {
                 if cursusUsers.last?.grade == "Learner" || cursusUsers.last?.grade == "Member" {
-                    if project.cursus_ids[0] == 21 {
+                    if !project.cursus_ids.isEmpty && project.cursus_ids[0] == 21 {
                         projectValidated.append(FinishedProject(name: project.project.name,
                                                                 mark: project.final_mark ?? 0,
                                                                 time: project.marked_at ?? ""))
