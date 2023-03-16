@@ -13,7 +13,7 @@ struct TokenAPIView: View {
     @State var secret: String = UserDefaults.standard.string(forKey: "secret") ?? ""
     @State var showSearch: Bool = false
     @State var isLoading: Bool = false
-
+    @State var selection: Int = 0
     var body: some View {
         VStack {
             VStack {
@@ -40,7 +40,20 @@ struct TokenAPIView: View {
             .disabled(!(uid != "" && secret != ""))
             .padding(.vertical)
             .navigationDestination(isPresented: $showSearch) {
-                UserSearchView()
+                TabView(selection: $selection) {
+                    UserSearchView()
+                        .tabItem({
+                            Image(systemName: "person.fill.questionmark")
+                                .resizable()
+                        })
+                        .tag(0)
+                    FriendsView()
+                        .tabItem({
+                            Image(systemName: "person.3.fill")
+                                .resizable()
+                        })
+                        .tag(1)
+                }
             }
         }
         .navigationTitle("UID/SECRET")

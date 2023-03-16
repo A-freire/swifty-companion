@@ -82,10 +82,10 @@ struct UserSearchView: View {
             }
             .padding(.bottom)
         }
+        .navigationTitle("Search")
         .navigationDestination(isPresented: $showUser, destination: {
             UserView(user: $user)
         })
-        .navigationTitle("Search")
         .navigationBarTitleDisplayMode(.inline)
     }
 

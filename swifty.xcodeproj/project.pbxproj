@@ -32,6 +32,7 @@
 		FC3E7BBA29AEC3EA00ED3A70 /* UserFinishedProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7BB929AEC3EA00ED3A70 /* UserFinishedProjectsView.swift */; };
 		FC3E7BBC29AEC78A00ED3A70 /* UserSkillsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7BBB29AEC78A00ED3A70 /* UserSkillsView.swift */; };
 		FC3E7BBE29AFC3F300ED3A70 /* CoaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7BBD29AFC3F300ED3A70 /* CoaModel.swift */; };
+		FC5C4B0F29C1FE410009F4FD /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C4B0E29C1FE410009F4FD /* FriendsView.swift */; };
 		FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */; };
 		FCC6999A29B4CC1A00C704E6 /* CampusUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */; };
 		FCE81FC529AFFFE200D9F330 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCE81FC429AFFFE200D9F330 /* SDWebImageSwiftUI */; };

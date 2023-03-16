@@ -15,6 +15,8 @@ struct UserView: View {
     @State var sortedListAchievement: [AchievementData] = []
     @State var isLoading: Bool = false
     @State var errorCount: Int = 0
+    @State var achievementGood: Bool = false
+    @State var colorGood: Bool = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -45,9 +47,16 @@ struct UserView: View {
                 }
             }
             .toolbar(content: {
-                Button("intra") {
-                    UIApplication.shared.open(URL(string: "https://profile.intra.42.fr/users/" + user.login)!)
-                }
+                Menu(content: {
+                    Button("intra") {
+                        UIApplication.shared.open(URL(string: "https://profile.intra.42.fr/users/" + user.login)!)
+                    }
+                    Button("amis") {
+                        addFriend(login: user.login)
+                    }
+                }, label: {
+                    Text("...")
+                })
             })
             .onReceive(timer, perform: { _ in
                 getAchievement()
@@ -68,12 +77,13 @@ struct UserView: View {
     }
 
     func getColor() {
-        if color == "#FFFFFF" && isLoading == false && errorCount < 5 {
+        if color == "#FFFFFF" && errorCount < 5 && colorGood == false {
             UserManager.shared.getColorCoa(login: user?.login ?? "") { loading in
                 isLoading = loading
             } onSucces: { color in
                 self.color = color
                 errorCount = 0
+                colorGood = true
             } onError: { error in
                 print(error)
                 errorCount += 1
@@ -82,17 +92,25 @@ struct UserView: View {
     }
 
     func getAchievement() {
-        if sortedListAchievement.isEmpty && isLoading == false && errorCount < 5 {
+        if sortedListAchievement.isEmpty && errorCount < 5 && achievementGood == false {
             UserAchievementManager.shared.getAchievementsList(userId: user?.id ?? 0) { loading in
                 isLoading = loading
             } onSucces: { datas in
                 self.sortedListAchievement = datas
                 errorCount = 0
+                achievementGood = true
             } onError: { error in
                 print(error)
                 errorCount += 1
             }
         }
+    }
+
+    func addFriend(login: String) {
+        var tab: [String] = UserDefaults.standard.object(forKey: "friends") as? [String] ?? []
+        guard !tab.contains(login) else {return}
+        tab.append(login)
+        UserDefaults.standard.set(tab, forKey: "friends")
     }
 }
 
