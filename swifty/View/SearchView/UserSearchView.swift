@@ -82,11 +82,9 @@ struct UserSearchView: View {
             }
             .padding(.bottom)
         }
-        .navigationTitle("Search")
         .navigationDestination(isPresented: $showUser, destination: {
             UserView(user: $user)
         })
-        .navigationBarTitleDisplayMode(.inline)
     }
 
     func historique(login: String, image: String) {

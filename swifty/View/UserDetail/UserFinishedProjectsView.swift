@@ -58,19 +58,30 @@ struct FinishedProjectCardView: View {
                 .cornerRadius(15)
             HStack {
                 Text(project.name + " - " + project.time.timeAgoSinceDate())
+                    .padding(10)
                 Spacer()
-                Text("\(project.mark)")
-                    .foregroundColor(project.mark >= 100 ? Color(hex: "#60d56b") : Color(hex: "#e4000f"))
+                ZStack {
+                    LinearGradient(colors: [project.mark >= 100 ? Color(hex: "#339966") : Color(hex: "#990000"), .clear],
+                                   startPoint: .trailing, endPoint: .center)
+                    .cornerRadius(15)
+                    HStack {
+                        Spacer()
+                        Text("\(project.mark)")
+                    }
+                    .padding(10)
+//                        .foregroundColor(project.mark >= 100 ? Color(hex: "#339966") : Color(hex: "#990000"))
+                }
                 // true
+                // 339966 = matmorva
                 // 60d56b = chat gpt
                 // ffff00 = yellow
                 // 4BB543 = success green
                 // false
+                // 990000 = matmorva
                 // EE4B2B = Dark Candy Apple Red
                 // f93822 = pentone bright red
                 // e4000f = nintendo red
             }
-            .padding(10)
         }
     }
 }

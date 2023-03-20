@@ -31,7 +31,6 @@ struct FriendsView: View {
             }
             .padding(.horizontal)
         }
-        .navigationTitle("Friends")
         .onAppear {
             friends = UserDefaults.standard.object(forKey: "friends") as? [String] ?? []
         }
