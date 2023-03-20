@@ -62,6 +62,7 @@ struct TopBarNavigation: View {
     @State var showSearch: Bool = false
     @State var selection: Int = 0
     @State private var isDocumentPickerVisible = false
+    @StateObject var mediaPickerService = MediaPickerService()
 
     var body: some View {
         TabView(selection: $selection) {
@@ -84,6 +85,7 @@ struct TopBarNavigation: View {
             if selection == 1 {
                 Menu(content: {
                     Button("upload friends list") {
+                        mediaPickerService.present(.document(type: .json))
                     }
                     Button("download friends list") {
                         self.isDocumentPickerVisible.toggle()
@@ -96,6 +98,17 @@ struct TopBarNavigation: View {
         .sheet(isPresented: $isDocumentPickerVisible) {
             if let jsonURL = saveStringArrayAsJSON(UserDefaults.standard.object(forKey: "friends") as? [String] ?? []) {
                 DocumentPicker(jsonURL: jsonURL)
+            }
+        }
+        .mediaPickerSheet(service: mediaPickerService) {} onDismiss: {}
+        .onReceive(mediaPickerService.$documentUrls) { documentUrl in
+            if let file = documentUrl.last?.absoluteString {
+                FriendsManager.shared.getFriendsList(fileurl: file) { _ in
+                } onSucces: { friends in
+                    UserDefaults.standard.set(friends, forKey: "friends")
+                } onError: { error in
+                    print(error)
+                }
             }
         }
     }

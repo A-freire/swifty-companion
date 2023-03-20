@@ -43,7 +43,7 @@ struct FriendCardView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var isGood: Bool = false
     @State var showUser: Bool = false
-
+    @State var errorCount: Int = 0
     var body: some View {
         VStack {
             ZStack {
@@ -69,7 +69,6 @@ struct FriendCardView: View {
         .navigationDestination(isPresented: $showUser, destination: {
             UserView(user: $user)
         })
-//        .redacted(reason: isGood == false ? .placeholder : [])
         .onReceive(timer, perform: { _ in
             getUser()
         })
@@ -80,15 +79,17 @@ struct FriendCardView: View {
     }
 
     func getUser() {
-        if isGood == false {
+        if isGood == false && errorCount < 10 {
             UserManager.shared.getUser(login: login) { _ in
                 isGood = true
             } onSucces: { user in
                 self.user = user
                 isGood = true
+                errorCount = 0
             } onError: { error in
                 print(error)
                 isGood = false
+                errorCount += 1
             }
         }
     }

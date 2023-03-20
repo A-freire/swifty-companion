@@ -33,6 +33,29 @@
 		FC3E7BBC29AEC78A00ED3A70 /* UserSkillsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7BBB29AEC78A00ED3A70 /* UserSkillsView.swift */; };
 		FC3E7BBE29AFC3F300ED3A70 /* CoaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7BBD29AFC3F300ED3A70 /* CoaModel.swift */; };
 		FC503EDE29C8BE3900F0A2FA /* FileGestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EDD29C8BE3900F0A2FA /* FileGestionView.swift */; };
+		FC503EFE29C8C71800F0A2FA /* MediaPickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EE129C8C71800F0A2FA /* MediaPickerService.swift */; };
+		FC503EFF29C8C71800F0A2FA /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EE329C8C71800F0A2FA /* Version.swift */; };
+		FC503F0029C8C71800F0A2FA /* UIImagePickerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EE529C8C71800F0A2FA /* UIImagePickerFilter.swift */; };
+		FC503F0129C8C71800F0A2FA /* MediaPickerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EE629C8C71800F0A2FA /* MediaPickerType.swift */; };
+		FC503F0229C8C71800F0A2FA /* DocumentSupportedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EE729C8C71800F0A2FA /* DocumentSupportedType.swift */; };
+		FC503F0329C8C71800F0A2FA /* MediaPickerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EE829C8C71800F0A2FA /* MediaPickerFilter.swift */; };
+		FC503F0429C8C71800F0A2FA /* MediaPickerDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EEA29C8C71800F0A2FA /* MediaPickerDocumentView.swift */; };
+		FC503F0529C8C71800F0A2FA /* MediaPickerMultipleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EEB29C8C71800F0A2FA /* MediaPickerMultipleView.swift */; };
+		FC503F0629C8C71800F0A2FA /* MediaPickerSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EEC29C8C71800F0A2FA /* MediaPickerSingleView.swift */; };
+		FC503F0729C8C71800F0A2FA /* MediaPickerObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EED29C8C71800F0A2FA /* MediaPickerObjectLoader.swift */; };
+		FC503F0829C8C71800F0A2FA /* MediaPickerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EEF29C8C71800F0A2FA /* MediaPickerResult.swift */; };
+		FC503F0929C8C71800F0A2FA /* MediaPickerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EF129C8C71800F0A2FA /* MediaPickerViewModifier.swift */; };
+		FC503F0A29C8C71800F0A2FA /* MediaPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EF229C8C71800F0A2FA /* MediaPickerView.swift */; };
+		FC503F0B29C8C71800F0A2FA /* MediaPickerSelectionLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EF429C8C71800F0A2FA /* MediaPickerSelectionLimit.swift */; };
+		FC503F0C29C8C71800F0A2FA /* UIDocumentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EF629C8C71800F0A2FA /* UIDocumentPickerView.swift */; };
+		FC503F0D29C8C71800F0A2FA /* PHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EF729C8C71800F0A2FA /* PHPickerView.swift */; };
+		FC503F0E29C8C71800F0A2FA /* UIImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EF829C8C71800F0A2FA /* UIImagePickerView.swift */; };
+		FC503F0F29C8C71900F0A2FA /* PDFKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EFA29C8C71800F0A2FA /* PDFKitView.swift */; };
+		FC503F1029C8C71900F0A2FA /* DocumentURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EFB29C8C71800F0A2FA /* DocumentURL.swift */; };
+		FC503F1129C8C71900F0A2FA /* LivePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EFC29C8C71800F0A2FA /* LivePhotoView.swift */; };
+		FC503F1229C8C71900F0A2FA /* PDFDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503EFD29C8C71800F0A2FA /* PDFDocumentView.swift */; };
+		FC503F1429C8CB5B00F0A2FA /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */; };
+		FC503F1629C8CBFE00F0A2FA /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */; };
 		FC5C4B0F29C1FE410009F4FD /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C4B0E29C1FE410009F4FD /* FriendsView.swift */; };
 		FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */; };
 		FCC6999A29B4CC1A00C704E6 /* CampusUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */; };
@@ -68,6 +91,29 @@
 		FC3E7BBB29AEC78A00ED3A70 /* UserSkillsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSkillsView.swift; sourceTree = "<group>"; };
 		FC3E7BBD29AFC3F300ED3A70 /* CoaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoaModel.swift; sourceTree = "<group>"; };
 		FC503EDD29C8BE3900F0A2FA /* FileGestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileGestionView.swift; sourceTree = "<group>"; };
+		FC503EE129C8C71800F0A2FA /* MediaPickerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerService.swift; sourceTree = "<group>"; };
+		FC503EE329C8C71800F0A2FA /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		FC503EE529C8C71800F0A2FA /* UIImagePickerFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerFilter.swift; sourceTree = "<group>"; };
+		FC503EE629C8C71800F0A2FA /* MediaPickerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerType.swift; sourceTree = "<group>"; };
+		FC503EE729C8C71800F0A2FA /* DocumentSupportedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentSupportedType.swift; sourceTree = "<group>"; };
+		FC503EE829C8C71800F0A2FA /* MediaPickerFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerFilter.swift; sourceTree = "<group>"; };
+		FC503EEA29C8C71800F0A2FA /* MediaPickerDocumentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerDocumentView.swift; sourceTree = "<group>"; };
+		FC503EEB29C8C71800F0A2FA /* MediaPickerMultipleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerMultipleView.swift; sourceTree = "<group>"; };
+		FC503EEC29C8C71800F0A2FA /* MediaPickerSingleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerSingleView.swift; sourceTree = "<group>"; };
+		FC503EED29C8C71800F0A2FA /* MediaPickerObjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerObjectLoader.swift; sourceTree = "<group>"; };
+		FC503EEF29C8C71800F0A2FA /* MediaPickerResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerResult.swift; sourceTree = "<group>"; };
+		FC503EF129C8C71800F0A2FA /* MediaPickerViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerViewModifier.swift; sourceTree = "<group>"; };
+		FC503EF229C8C71800F0A2FA /* MediaPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerView.swift; sourceTree = "<group>"; };
+		FC503EF429C8C71800F0A2FA /* MediaPickerSelectionLimit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerSelectionLimit.swift; sourceTree = "<group>"; };
+		FC503EF629C8C71800F0A2FA /* UIDocumentPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDocumentPickerView.swift; sourceTree = "<group>"; };
+		FC503EF729C8C71800F0A2FA /* PHPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PHPickerView.swift; sourceTree = "<group>"; };
+		FC503EF829C8C71800F0A2FA /* UIImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerView.swift; sourceTree = "<group>"; };
+		FC503EFA29C8C71800F0A2FA /* PDFKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFKitView.swift; sourceTree = "<group>"; };
+		FC503EFB29C8C71800F0A2FA /* DocumentURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentURL.swift; sourceTree = "<group>"; };
+		FC503EFC29C8C71800F0A2FA /* LivePhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoView.swift; sourceTree = "<group>"; };
+		FC503EFD29C8C71800F0A2FA /* PDFDocumentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFDocumentView.swift; sourceTree = "<group>"; };
+		FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = "<group>"; };
+		FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
 		FC5C4B0E29C1FE410009F4FD /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementView.swift; sourceTree = "<group>"; };
 		FC9DE07B29B26F9200AF895F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +165,7 @@
 		FC3E7B5D29ACE7D500ED3A70 /* swifty */ = {
 			isa = PBXGroup;
 			children = (
+				FC503EDF29C8C71800F0A2FA /* MediaPicker */,
 				FC9DE07B29B26F9200AF895F /* Info.plist */,
 				FC3E7B9829AD1BA100ED3A70 /* Other */,
 				FC3E7B9529ACFB4000ED3A70 /* Manager */,
@@ -155,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				FC3E7B9029ACEF9800ED3A70 /* UserServices.swift */,
+				FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -177,6 +225,7 @@
 				FC3E7B9629AD155D00ED3A70 /* CredentialManager.swift */,
 				FC3E7BAF29AE855200ED3A70 /* UserManager.swift */,
 				FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */,
+				FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -213,6 +262,106 @@
 				FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */,
 			);
 			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		FC503EDF29C8C71800F0A2FA /* MediaPicker */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EE029C8C71800F0A2FA /* ViewModels */,
+				FC503EE229C8C71800F0A2FA /* Util */,
+				FC503EE429C8C71800F0A2FA /* Enums */,
+				FC503EE929C8C71800F0A2FA /* MediaPickerViews */,
+				FC503EEE29C8C71800F0A2FA /* Models */,
+				FC503EF029C8C71800F0A2FA /* MediaPickerView */,
+				FC503EF329C8C71800F0A2FA /* Extensions */,
+				FC503EF529C8C71800F0A2FA /* UIViewControllerRespresentable */,
+				FC503EF929C8C71800F0A2FA /* Helpers */,
+			);
+			path = MediaPicker;
+			sourceTree = "<group>";
+		};
+		FC503EE029C8C71800F0A2FA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EE129C8C71800F0A2FA /* MediaPickerService.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FC503EE229C8C71800F0A2FA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EE329C8C71800F0A2FA /* Version.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		FC503EE429C8C71800F0A2FA /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EE529C8C71800F0A2FA /* UIImagePickerFilter.swift */,
+				FC503EE629C8C71800F0A2FA /* MediaPickerType.swift */,
+				FC503EE729C8C71800F0A2FA /* DocumentSupportedType.swift */,
+				FC503EE829C8C71800F0A2FA /* MediaPickerFilter.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		FC503EE929C8C71800F0A2FA /* MediaPickerViews */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EEA29C8C71800F0A2FA /* MediaPickerDocumentView.swift */,
+				FC503EEB29C8C71800F0A2FA /* MediaPickerMultipleView.swift */,
+				FC503EEC29C8C71800F0A2FA /* MediaPickerSingleView.swift */,
+				FC503EED29C8C71800F0A2FA /* MediaPickerObjectLoader.swift */,
+			);
+			path = MediaPickerViews;
+			sourceTree = "<group>";
+		};
+		FC503EEE29C8C71800F0A2FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EEF29C8C71800F0A2FA /* MediaPickerResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FC503EF029C8C71800F0A2FA /* MediaPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EF129C8C71800F0A2FA /* MediaPickerViewModifier.swift */,
+				FC503EF229C8C71800F0A2FA /* MediaPickerView.swift */,
+			);
+			path = MediaPickerView;
+			sourceTree = "<group>";
+		};
+		FC503EF329C8C71800F0A2FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EF429C8C71800F0A2FA /* MediaPickerSelectionLimit.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FC503EF529C8C71800F0A2FA /* UIViewControllerRespresentable */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EF629C8C71800F0A2FA /* UIDocumentPickerView.swift */,
+				FC503EF729C8C71800F0A2FA /* PHPickerView.swift */,
+				FC503EF829C8C71800F0A2FA /* UIImagePickerView.swift */,
+			);
+			path = UIViewControllerRespresentable;
+			sourceTree = "<group>";
+		};
+		FC503EF929C8C71800F0A2FA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FC503EFA29C8C71800F0A2FA /* PDFKitView.swift */,
+				FC503EFB29C8C71800F0A2FA /* DocumentURL.swift */,
+				FC503EFC29C8C71800F0A2FA /* LivePhotoView.swift */,
+				FC503EFD29C8C71800F0A2FA /* PDFDocumentView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FC5C4B0D29C1FE1B0009F4FD /* Friends */ = {
@@ -332,28 +481,51 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC3E7B5F29ACE7D500ED3A70 /* swiftyApp.swift in Sources */,
+				FC503F0029C8C71800F0A2FA /* UIImagePickerFilter.swift in Sources */,
+				FC503F0D29C8C71800F0A2FA /* PHPickerView.swift in Sources */,
+				FC503EFF29C8C71800F0A2FA /* Version.swift in Sources */,
+				FC503F0C29C8C71800F0A2FA /* UIDocumentPickerView.swift in Sources */,
 				FC3E7BBE29AFC3F300ED3A70 /* CoaModel.swift in Sources */,
 				FC3E7B9A29AD1BB500ED3A70 /* Constante.swift in Sources */,
 				FC3E7BB029AE855200ED3A70 /* UserManager.swift in Sources */,
 				FC2EB32829B14CE1003F0362 /* HistoriqueUsersView.swift in Sources */,
+				FC503F0329C8C71800F0A2FA /* MediaPickerFilter.swift in Sources */,
+				FC503F1029C8C71900F0A2FA /* DocumentURL.swift in Sources */,
 				FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */,
 				FCE81FCA29B00CA400D9F330 /* AchievementDataModel.swift in Sources */,
 				FC3E7BB829AEBD7400ED3A70 /* UserOnGoingProjectView.swift in Sources */,
+				FC503F1129C8C71900F0A2FA /* LivePhotoView.swift in Sources */,
+				FC503F0829C8C71800F0A2FA /* MediaPickerResult.swift in Sources */,
 				FC3E7BBA29AEC3EA00ED3A70 /* UserFinishedProjectsView.swift in Sources */,
 				FC3E7B8929ACE9CC00ED3A70 /* TokenAPIView.swift in Sources */,
+				FC503F0929C8C71800F0A2FA /* MediaPickerViewModifier.swift in Sources */,
+				FC503F0A29C8C71800F0A2FA /* MediaPickerView.swift in Sources */,
+				FC503F0129C8C71800F0A2FA /* MediaPickerType.swift in Sources */,
 				FC3E7BAC29AE847500ED3A70 /* Extension.swift in Sources */,
 				FC3E7B9729AD155D00ED3A70 /* CredentialManager.swift in Sources */,
+				FC503F0429C8C71800F0A2FA /* MediaPickerDocumentView.swift in Sources */,
 				FC3E7B9129ACEF9800ED3A70 /* UserServices.swift in Sources */,
 				FC3E7BBC29AEC78A00ED3A70 /* UserSkillsView.swift in Sources */,
+				FC503F1429C8CB5B00F0A2FA /* FriendsManager.swift in Sources */,
+				FC503F0E29C8C71800F0A2FA /* UIImagePickerView.swift in Sources */,
 				FC3E7BAE29AE848300ED3A70 /* Enum.swift in Sources */,
+				FC503F1229C8C71900F0A2FA /* PDFDocumentView.swift in Sources */,
+				FC503F0729C8C71800F0A2FA /* MediaPickerObjectLoader.swift in Sources */,
 				FC3E7B9429ACF84600ED3A70 /* CredentialModel.swift in Sources */,
 				FC3E7BA829AE7B7B00ED3A70 /* UserView.swift in Sources */,
 				FCC6999A29B4CC1A00C704E6 /* CampusUserModel.swift in Sources */,
 				FC5C4B0F29C1FE410009F4FD /* FriendsView.swift in Sources */,
 				FC3E7B8E29ACEC8B00ED3A70 /* UserSearchView.swift in Sources */,
+				FC503EFE29C8C71800F0A2FA /* MediaPickerService.swift in Sources */,
+				FC503F0F29C8C71900F0A2FA /* PDFKitView.swift in Sources */,
 				FCE81FCC29B00F4300D9F330 /* UserAchievementManager.swift in Sources */,
+				FC503F0629C8C71800F0A2FA /* MediaPickerSingleView.swift in Sources */,
 				FC3E7B9F29AE36A400ED3A70 /* Lottie.swift in Sources */,
 				FC3E7BAA29AE83F000ED3A70 /* UserModel.swift in Sources */,
+				FC503F0529C8C71800F0A2FA /* MediaPickerMultipleView.swift in Sources */,
+				FC503F1629C8CBFE00F0A2FA /* FriendsService.swift in Sources */,
+				FC503F0B29C8C71800F0A2FA /* MediaPickerSelectionLimit.swift in Sources */,
+				FC503F0229C8C71800F0A2FA /* DocumentSupportedType.swift in Sources */,
 				FC503EDE29C8BE3900F0A2FA /* FileGestionView.swift in Sources */,
 				FC3E7BB629AE969400ED3A70 /* UserCardView.swift in Sources */,
 			);
