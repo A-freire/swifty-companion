@@ -21,8 +21,7 @@ public struct MediaPickerResult: Identifiable {
     public init(type: MediaPickerType? = nil,
                 results: [PHPickerResult]? = nil,
                 info: [UIImagePickerController.InfoKey: Any]? = nil,
-                documentUrl: DocumentURL? = nil)
-    {
+                documentUrl: DocumentURL? = nil) {
         self.type = type ?? .single
         self.results = results ?? []
         self.info = info

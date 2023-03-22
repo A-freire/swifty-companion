@@ -15,8 +15,7 @@ public struct UIImagePickerView: UIViewControllerRepresentable {
 
     public func makeUIViewController(context:
         UIViewControllerRepresentableContext<UIImagePickerView>) ->
-        UIImagePickerController
-    {
+        UIImagePickerController {
         let picker = UIImagePickerController()
         picker.allowsEditing = service.allowsEditing
 
@@ -57,8 +56,7 @@ public struct UIImagePickerView: UIViewControllerRepresentable {
         }
 
         public func imagePickerController(_: UIImagePickerController,
-                                          didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
-        {
+                                          didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             let mediaPickerResult = MediaPickerResult(type: .single, info: info)
             parent.service.mediaPickerResult = mediaPickerResult
             parent.service.isPresented = false

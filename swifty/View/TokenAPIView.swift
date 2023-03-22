@@ -96,7 +96,8 @@ struct TopBarNavigation: View {
             }
         })
         .sheet(isPresented: $isDocumentPickerVisible) {
-            if let jsonURL = saveStringArrayAsJSON(UserDefaults.standard.object(forKey: "friends") as? [String] ?? []) {
+// swiftlint:disable:next line_length
+            if let jsonURL = saveDictionaryArrayAsJSON(UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []) {
                 DocumentPicker(jsonURL: jsonURL)
             }
         }
@@ -113,9 +114,9 @@ struct TopBarNavigation: View {
         }
     }
 
-    func saveStringArrayAsJSON(_ stringArray: [String]) -> URL? {
+    func saveDictionaryArrayAsJSON(_ dictionaryArray: [[String: String]]) -> URL? {
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: stringArray, options: .prettyPrinted)
+            let jsonData = try JSONSerialization.data(withJSONObject: dictionaryArray, options: .prettyPrinted)
             let tempDirectory = FileManager.default.temporaryDirectory
             let tempFileURL = tempDirectory.appendingPathComponent("output.json")
             try jsonData.write(to: tempFileURL)
@@ -125,4 +126,5 @@ struct TopBarNavigation: View {
             return nil
         }
     }
+
 }

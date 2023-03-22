@@ -16,7 +16,7 @@ class FriendsManager {
 
     public func getFriendsList(fileurl: String,
                                onLoading: @escaping (Bool) -> Void,
-                               onSucces: @escaping ([String]) -> Void,
+                               onSucces: @escaping ([[String: String]]) -> Void,
                                onError: @escaping (String) -> Void ) {
         onLoading(true)
         FriendsService.shared.getFriendsList(fileurl: fileurl)

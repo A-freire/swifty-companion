@@ -16,8 +16,7 @@ struct MediaPickerImageOrVideo {
 
 enum MediaPickerObjectLoader {
     static func loadImage(_ info: [UIImagePickerController.InfoKey: Any]?,
-                          completion: @escaping (Result<UIImage, Error>) -> Void)
-    {
+                          completion: @escaping (Result<UIImage, Error>) -> Void) {
         guard let info = info else {
             completion(.failure(NSError(domain: "Could not find info", code: -1)))
             return
@@ -33,8 +32,7 @@ enum MediaPickerObjectLoader {
     }
 
     static func loadVideo(_ info: [UIImagePickerController.InfoKey: Any]?,
-                          completion: @escaping (Result<URL, Error>) -> Void)
-    {
+                          completion: @escaping (Result<URL, Error>) -> Void) {
         guard let info = info else {
             completion(.failure(NSError(domain: "Could not find info", code: -1)))
             return
@@ -48,8 +46,7 @@ enum MediaPickerObjectLoader {
     }
 
     static func loadImageOrVideo(_ info: [UIImagePickerController.InfoKey: Any]?,
-                                 completion: @escaping (Result<MediaPickerImageOrVideo, Error>) -> Void)
-    {
+                                 completion: @escaping (Result<MediaPickerImageOrVideo, Error>) -> Void) {
         guard let info = info else {
             completion(.failure(NSError(domain: "Could not find info", code: -1)))
             return
@@ -83,8 +80,7 @@ enum MediaPickerObjectLoader {
     }
 
     static func loadLivePhoto(_ result: PHPickerResult,
-                              completion: @escaping (Result<PHLivePhoto, Error>) -> Void)
-    {
+                              completion: @escaping (Result<PHLivePhoto, Error>) -> Void) {
         let itemProvider = result.itemProvider
         getLivePhoto(from: itemProvider, completion: completion)
     }
@@ -105,8 +101,7 @@ enum MediaPickerObjectLoader {
     }
 
     private static func getPhoto(from itemProvider: NSItemProvider,
-                                 completion: @escaping (Result<UIImage, Error>) -> Void)
-    {
+                                 completion: @escaping (Result<UIImage, Error>) -> Void) {
         let objectType: NSItemProviderReading.Type = UIImage.self
         if itemProvider.canLoadObject(ofClass: objectType) {
             itemProvider.loadObject(ofClass: objectType) { object, error in
@@ -126,8 +121,7 @@ enum MediaPickerObjectLoader {
     }
 
     private static func getLivePhoto(from itemProvider: NSItemProvider,
-                                     completion: @escaping (Result<PHLivePhoto, Error>) -> Void)
-    {
+                                     completion: @escaping (Result<PHLivePhoto, Error>) -> Void) {
         let objectType: NSItemProviderReading.Type = PHLivePhoto.self
         if itemProvider.canLoadObject(ofClass: objectType) {
             itemProvider.loadObject(ofClass: objectType) { object, error in
@@ -148,8 +142,7 @@ enum MediaPickerObjectLoader {
 
     private static func getMovie(from itemProvider: NSItemProvider,
                                  typeIdentifier: String,
-                                 completion: @escaping (Result<URL, Error>) -> Void)
-    {
+                                 completion: @escaping (Result<URL, Error>) -> Void) {
         itemProvider.loadFileRepresentation(forTypeIdentifier: typeIdentifier) { url, error in
             if let error = error {
                 completion(.failure(error))
@@ -181,8 +174,7 @@ enum MediaPickerObjectLoader {
     }
 
     private static func loadFileRepresentation(itemProvider: NSItemProvider,
-                                               typeIdentifier: String) async throws -> URL
-    {
+                                               typeIdentifier: String) async throws -> URL {
         try await withCheckedThrowingContinuation { continuation in
             itemProvider.loadFileRepresentation(forTypeIdentifier: typeIdentifier) { url, error in
                 if let error = error {
@@ -212,8 +204,7 @@ enum MediaPickerObjectLoader {
     }
 
     private static func loadObject<T>(itemProvider: NSItemProvider,
-                                      objectType: NSItemProviderReading.Type) async throws -> T
-    {
+                                      objectType: NSItemProviderReading.Type) async throws -> T {
         try await withCheckedThrowingContinuation { continuation in
             if itemProvider.canLoadObject(ofClass: objectType) {
                 itemProvider.loadObject(ofClass: objectType) { object, error in

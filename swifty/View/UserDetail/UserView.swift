@@ -52,7 +52,7 @@ struct UserView: View {
                         UIApplication.shared.open(URL(string: "https://profile.intra.42.fr/users/" + user.login)!)
                     }
                     Button("amis") {
-                        addFriend(login: user.login)
+                        addFriend(login: user.login, image: user.image)
                     }
                 }, label: {
                     Text("...")
@@ -106,10 +106,10 @@ struct UserView: View {
         }
     }
 
-    func addFriend(login: String) {
-        var tab: [String] = UserDefaults.standard.object(forKey: "friends") as? [String] ?? []
-        guard !tab.contains(login) else {return}
-        tab.append(login)
+    func addFriend(login: String, image: String) {
+        var tab: [[String: String]] = UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []
+        guard !tab.contains([login: image]) else {return}
+        tab.append([login: image])
         UserDefaults.standard.set(tab, forKey: "friends")
     }
 }

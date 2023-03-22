@@ -61,6 +61,7 @@ struct FinishedProjectCardView: View {
                     .padding(10)
                 Spacer()
                 ZStack {
+// swiftlint:disable:next line_length
                     LinearGradient(colors: [project.mark >= 100 ? Color(hex: "#339966") : Color(hex: "#990000"), .clear],
                                    startPoint: .trailing, endPoint: .center)
                     .cornerRadius(15)

@@ -58,6 +58,9 @@
 		FC503F1629C8CBFE00F0A2FA /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */; };
 		FC5C4B0F29C1FE410009F4FD /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C4B0E29C1FE410009F4FD /* FriendsView.swift */; };
 		FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */; };
+		FC9E344229C9E944000138F9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344129C9E944000138F9 /* LocationModel.swift */; };
+		FC9E344429C9EB5E000138F9 /* LocationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344329C9EB5E000138F9 /* LocationsService.swift */; };
+		FC9E344629C9ECCC000138F9 /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344529C9ECCC000138F9 /* LocationsManager.swift */; };
 		FCC6999A29B4CC1A00C704E6 /* CampusUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */; };
 		FCE81FC529AFFFE200D9F330 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCE81FC429AFFFE200D9F330 /* SDWebImageSwiftUI */; };
 		FCE81FC829B0025A00D9F330 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FCE81FC729B0025A00D9F330 /* SDWebImageSVGCoder */; };
@@ -117,6 +120,9 @@
 		FC5C4B0E29C1FE410009F4FD /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementView.swift; sourceTree = "<group>"; };
 		FC9DE07B29B26F9200AF895F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FC9E344129C9E944000138F9 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		FC9E344329C9EB5E000138F9 /* LocationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsService.swift; sourceTree = "<group>"; };
+		FC9E344529C9ECCC000138F9 /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
 		FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusUserModel.swift; sourceTree = "<group>"; };
 		FCE81FC929B00CA400D9F330 /* AchievementDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDataModel.swift; sourceTree = "<group>"; };
 		FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementManager.swift; sourceTree = "<group>"; };
@@ -168,9 +174,9 @@
 				FC503EDF29C8C71800F0A2FA /* MediaPicker */,
 				FC9DE07B29B26F9200AF895F /* Info.plist */,
 				FC3E7B9829AD1BA100ED3A70 /* Other */,
-				FC3E7B9529ACFB4000ED3A70 /* Manager */,
 				FC3E7B9229ACF83500ED3A70 /* Model */,
 				FC3E7B8F29ACEF7100ED3A70 /* Service */,
+				FC3E7B9529ACFB4000ED3A70 /* Manager */,
 				FC3E7B8A29ACEC2000ED3A70 /* View */,
 				FC3E7B6229ACE7D700ED3A70 /* Assets.xcassets */,
 				FC3E7B6429ACE7D700ED3A70 /* Preview Content */,
@@ -203,6 +209,7 @@
 			children = (
 				FC3E7B9029ACEF9800ED3A70 /* UserServices.swift */,
 				FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */,
+				FC9E344329C9EB5E000138F9 /* LocationsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 				FC3E7BBD29AFC3F300ED3A70 /* CoaModel.swift */,
 				FCE81FC929B00CA400D9F330 /* AchievementDataModel.swift */,
 				FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */,
+				FC9E344129C9E944000138F9 /* LocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 				FC3E7BAF29AE855200ED3A70 /* UserManager.swift */,
 				FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */,
 				FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */,
+				FC9E344529C9ECCC000138F9 /* LocationsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -485,6 +494,7 @@
 				FC503F0D29C8C71800F0A2FA /* PHPickerView.swift in Sources */,
 				FC503EFF29C8C71800F0A2FA /* Version.swift in Sources */,
 				FC503F0C29C8C71800F0A2FA /* UIDocumentPickerView.swift in Sources */,
+				FC9E344629C9ECCC000138F9 /* LocationsManager.swift in Sources */,
 				FC3E7BBE29AFC3F300ED3A70 /* CoaModel.swift in Sources */,
 				FC3E7B9A29AD1BB500ED3A70 /* Constante.swift in Sources */,
 				FC3E7BB029AE855200ED3A70 /* UserManager.swift in Sources */,
@@ -499,6 +509,7 @@
 				FC3E7BBA29AEC3EA00ED3A70 /* UserFinishedProjectsView.swift in Sources */,
 				FC3E7B8929ACE9CC00ED3A70 /* TokenAPIView.swift in Sources */,
 				FC503F0929C8C71800F0A2FA /* MediaPickerViewModifier.swift in Sources */,
+				FC9E344229C9E944000138F9 /* LocationModel.swift in Sources */,
 				FC503F0A29C8C71800F0A2FA /* MediaPickerView.swift in Sources */,
 				FC503F0129C8C71800F0A2FA /* MediaPickerType.swift in Sources */,
 				FC3E7BAC29AE847500ED3A70 /* Extension.swift in Sources */,
@@ -519,6 +530,7 @@
 				FC503EFE29C8C71800F0A2FA /* MediaPickerService.swift in Sources */,
 				FC503F0F29C8C71900F0A2FA /* PDFKitView.swift in Sources */,
 				FCE81FCC29B00F4300D9F330 /* UserAchievementManager.swift in Sources */,
+				FC9E344429C9EB5E000138F9 /* LocationsService.swift in Sources */,
 				FC503F0629C8C71800F0A2FA /* MediaPickerSingleView.swift in Sources */,
 				FC3E7B9F29AE36A400ED3A70 /* Lottie.swift in Sources */,
 				FC3E7BAA29AE83F000ED3A70 /* UserModel.swift in Sources */,

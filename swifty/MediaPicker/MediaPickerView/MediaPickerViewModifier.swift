@@ -34,8 +34,7 @@ extension View {
     /// - Returns: a View
     func mediaPickerSheet(service: MediaPickerService,
                           onCancel: (() -> Void)?,
-                          onDismiss: (() -> Void)?) -> some View
-    {
+                          onDismiss: (() -> Void)?) -> some View {
         modifier(MediaPickerViewModifier(mediaPickerService: service, onCancel: onCancel, onDismiss: onDismiss))
     }
 }
