@@ -14,13 +14,14 @@ struct FriendsView: View {
     @State var count: Int = 0
     @State var locations: [Location] = []
     @State var isLoading: Bool = false
+    @State var isError: Bool = false
 
     var body: some View {
         VStack {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(friends, id: \.self) { friend in
-                        FriendCardView(friend: friend, locations: $locations, isLoading: $isLoading)
+                        FriendCardView(friend: friend, locations: $locations, isLoading: $isLoading, isError: $isError)
                             .onLongPressGesture {
                                 withAnimation {
                                     friends.removeAll(where: {$0 == friend})
@@ -43,6 +44,7 @@ struct FriendsView: View {
 
     func getLocation() {
         isLoading = true
+        isError = false
         LocationsManager.shared.getLocations { _ in
         } onSucces: { locations in
         print("j'ai les locations")
@@ -50,6 +52,8 @@ struct FriendsView: View {
             isLoading = false
         } onError: { error in
             print(error)
+            isLoading = true
+            isError = true
         }
     }
 }
@@ -58,9 +62,10 @@ struct FriendCardView: View {
     var friend: [String: String]
     @Binding var locations: [Location]
     @Binding var isLoading: Bool
+    @Binding var isError: Bool
     @State var user: User?
     @State var showUser: Bool = false
-
+    
     var body: some View {
         VStack {
             ZStack {
@@ -75,6 +80,7 @@ struct FriendCardView: View {
                             .clipShape(Circle())
                         Text(login)
                         Text(locations.first(where: { $0.user.login == login })?.host ?? "unavailable")
+                            .foregroundColor(isError == true ? .red : .primary )
                             .redacted(reason: isLoading == true ? .placeholder : [])
                     }
                     .padding(10)
@@ -90,6 +96,7 @@ struct FriendCardView: View {
     }
 
     func getUser(login: String) {
+        guard isLoading == false else {return}
         UserManager.shared.getUser(login: login) { _ in
         } onSucces: { user in
             self.user = user

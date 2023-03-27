@@ -53,11 +53,15 @@ class CredManager {
                     UserDefaults.standard.set(cred.access_token, forKey: "access_token")
                     UserDefaults.standard.set(Date().addingTimeInterval(TimeInterval(cred.expires_in)),
                                               forKey: "expiration")
-                    onSucces()
+                    let delayInSeconds: TimeInterval = 0.5
+                    DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
+                        onSucces()
+                    }
                 }
                 .store(in: &cancellables)
+        } else {
+            onSucces()
         }
-        onSucces()
     }
 
 }
