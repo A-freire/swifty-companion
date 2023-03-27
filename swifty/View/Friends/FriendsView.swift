@@ -65,7 +65,7 @@ struct FriendCardView: View {
     @Binding var isError: Bool
     @State var user: User?
     @State var showUser: Bool = false
-    
+
     var body: some View {
         VStack {
             ZStack {
