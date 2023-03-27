@@ -61,6 +61,9 @@
 		FC9E344229C9E944000138F9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344129C9E944000138F9 /* LocationModel.swift */; };
 		FC9E344429C9EB5E000138F9 /* LocationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344329C9EB5E000138F9 /* LocationsService.swift */; };
 		FC9E344629C9ECCC000138F9 /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344529C9ECCC000138F9 /* LocationsManager.swift */; };
+		FCC32E2429D2246900D0DCB2 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC32E2329D2246900D0DCB2 /* ProjectModel.swift */; };
+		FCC32E2629D22B9100D0DCB2 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC32E2529D22B9100D0DCB2 /* ProjectService.swift */; };
+		FCC32E2829D235E800D0DCB2 /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC32E2729D235E800D0DCB2 /* ProjectManager.swift */; };
 		FCC6999A29B4CC1A00C704E6 /* CampusUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */; };
 		FCE81FC529AFFFE200D9F330 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = FCE81FC429AFFFE200D9F330 /* SDWebImageSwiftUI */; };
 		FCE81FC829B0025A00D9F330 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FCE81FC729B0025A00D9F330 /* SDWebImageSVGCoder */; };
@@ -123,6 +126,9 @@
 		FC9E344129C9E944000138F9 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		FC9E344329C9EB5E000138F9 /* LocationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsService.swift; sourceTree = "<group>"; };
 		FC9E344529C9ECCC000138F9 /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
+		FCC32E2329D2246900D0DCB2 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		FCC32E2529D22B9100D0DCB2 /* ProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
+		FCC32E2729D235E800D0DCB2 /* ProjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
 		FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusUserModel.swift; sourceTree = "<group>"; };
 		FCE81FC929B00CA400D9F330 /* AchievementDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDataModel.swift; sourceTree = "<group>"; };
 		FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementManager.swift; sourceTree = "<group>"; };
@@ -210,6 +216,7 @@
 				FC3E7B9029ACEF9800ED3A70 /* UserServices.swift */,
 				FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */,
 				FC9E344329C9EB5E000138F9 /* LocationsService.swift */,
+				FCC32E2529D22B9100D0DCB2 /* ProjectService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -223,6 +230,7 @@
 				FCE81FC929B00CA400D9F330 /* AchievementDataModel.swift */,
 				FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */,
 				FC9E344129C9E944000138F9 /* LocationModel.swift */,
+				FCC32E2329D2246900D0DCB2 /* ProjectModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +243,7 @@
 				FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */,
 				FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */,
 				FC9E344529C9ECCC000138F9 /* LocationsManager.swift */,
+				FCC32E2729D235E800D0DCB2 /* ProjectManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -502,9 +511,11 @@
 				FC503F0329C8C71800F0A2FA /* MediaPickerFilter.swift in Sources */,
 				FC503F1029C8C71900F0A2FA /* DocumentURL.swift in Sources */,
 				FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */,
+				FCC32E2429D2246900D0DCB2 /* ProjectModel.swift in Sources */,
 				FCE81FCA29B00CA400D9F330 /* AchievementDataModel.swift in Sources */,
 				FC3E7BB829AEBD7400ED3A70 /* UserOnGoingProjectView.swift in Sources */,
 				FC503F1129C8C71900F0A2FA /* LivePhotoView.swift in Sources */,
+				FCC32E2629D22B9100D0DCB2 /* ProjectService.swift in Sources */,
 				FC503F0829C8C71800F0A2FA /* MediaPickerResult.swift in Sources */,
 				FC3E7BBA29AEC3EA00ED3A70 /* UserFinishedProjectsView.swift in Sources */,
 				FC3E7B8929ACE9CC00ED3A70 /* TokenAPIView.swift in Sources */,
@@ -518,6 +529,7 @@
 				FC3E7B9129ACEF9800ED3A70 /* UserServices.swift in Sources */,
 				FC3E7BBC29AEC78A00ED3A70 /* UserSkillsView.swift in Sources */,
 				FC503F1429C8CB5B00F0A2FA /* FriendsManager.swift in Sources */,
+				FCC32E2829D235E800D0DCB2 /* ProjectManager.swift in Sources */,
 				FC503F0E29C8C71800F0A2FA /* UIImagePickerView.swift in Sources */,
 				FC3E7BAE29AE848300ED3A70 /* Enum.swift in Sources */,
 				FC503F1229C8C71900F0A2FA /* PDFDocumentView.swift in Sources */,

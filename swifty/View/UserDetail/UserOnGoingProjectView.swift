@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserOnGoingProjectView: View {
     @State var showAll: Bool = false
-    let projects: [String]
+    let projects: [ProjectUsers]
 
     var body: some View {
         VStack {
@@ -28,20 +28,20 @@ struct UserOnGoingProjectView: View {
                     }
                 }
             }
-            ForEach(projects.prefix(3), id: \.self) { name in
-                OnGoingProjectCardView(name: name)
+            ForEach(projects.prefix(3), id: \.self) { project in
+                OnGoingProjectCardView(name: project.project.name, idProject: project.id)
             }
         }
     }
 }
 
 struct AllOnGoingProjectCardView: View {
-    let projects: [String]
+    let projects: [ProjectUsers]
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            ForEach(projects, id: \.self) { name in
-                OnGoingProjectCardView(name: name)
+            ForEach(projects, id: \.self) { project in
+                OnGoingProjectCardView(name: project.project.name, idProject: project.id)
             }
         }
         .navigationTitle("Ongoing projects")
@@ -51,6 +51,9 @@ struct AllOnGoingProjectCardView: View {
 
 struct OnGoingProjectCardView: View {
     let name: String
+    let idProject: Int
+    @State var project: Project?
+    @State var showProject: Bool = false
 
     var body: some View {
         ZStack {
@@ -60,6 +63,23 @@ struct OnGoingProjectCardView: View {
                 Text(name)
                     .padding(10)
                 Spacer()
+            }
+            .onTapGesture {
+                ProjectManager.shared.getProject(idProject: idProject) { _ in
+                } onSucces: { project in
+                    self.project = project
+                    showProject = true
+                    print("ca marche")
+                } onError: { error in
+                    print(error)
+                    print("ca marche pas")
+                }
+
+            }
+        }
+        .navigationDestination(isPresented: $showProject) {
+            VStack {
+                Text("ca marche")
             }
         }
     }

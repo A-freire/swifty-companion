@@ -99,11 +99,11 @@ class User {
         return log
     }
 
-    func getOnGoingProject() -> [String] {
-        var projectName: [String] = []
+    func getOnGoingProject() -> [ProjectUsers] {
+        var projectName: [ProjectUsers] = []
         projectsUsers.forEach { project in
             if project.status == "in_progress" || project.status == "waiting_for_correction" {
-                projectName.append(project.project.name)
+                projectName.append(project)
             }
         }
         return projectName
@@ -173,7 +173,15 @@ struct TitlesUsers: Codable, Hashable {
     let selected: Bool
 }
 
-struct ProjectUsers: Codable {
+struct ProjectUsers: Codable, Hashable {
+    static func == (lhs: ProjectUsers, rhs: ProjectUsers) -> Bool {
+        return lhs.id == rhs.id
+    }
+    func hash(into hasher: inout Hasher) {
+       hasher.combine(id)
+    }
+
+    let id: Int
     let occurrence: Int
     let final_mark: Int?
     let status: String
