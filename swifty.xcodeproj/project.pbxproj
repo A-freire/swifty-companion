@@ -57,6 +57,7 @@
 		FC503F1429C8CB5B00F0A2FA /* FriendsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */; };
 		FC503F1629C8CBFE00F0A2FA /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */; };
 		FC5C4B0F29C1FE410009F4FD /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5C4B0E29C1FE410009F4FD /* FriendsView.swift */; };
+		FC6A6A4029D350AE007FC09B /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A6A3F29D350AE007FC09B /* ProjectView.swift */; };
 		FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */; };
 		FC9E344229C9E944000138F9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344129C9E944000138F9 /* LocationModel.swift */; };
 		FC9E344429C9EB5E000138F9 /* LocationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344329C9EB5E000138F9 /* LocationsService.swift */; };
@@ -121,6 +122,7 @@
 		FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsManager.swift; sourceTree = "<group>"; };
 		FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
 		FC5C4B0E29C1FE410009F4FD /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		FC6A6A3F29D350AE007FC09B /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		FC9325DD29AFF46100EAFCFA /* UserAchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementView.swift; sourceTree = "<group>"; };
 		FC9DE07B29B26F9200AF895F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC9E344129C9E944000138F9 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		FC3E7BB129AE949600ED3A70 /* UserDetail */ = {
 			isa = PBXGroup;
 			children = (
+				FC6A6A3E29D35091007FC09B /* Project */,
 				FC3E7BA729AE7B7B00ED3A70 /* UserView.swift */,
 				FC3E7BB529AE969400ED3A70 /* UserCardView.swift */,
 				FC3E7BB729AEBD7400ED3A70 /* UserOnGoingProjectView.swift */,
@@ -389,6 +392,14 @@
 				FC503EDD29C8BE3900F0A2FA /* FileGestionView.swift */,
 			);
 			path = Friends;
+			sourceTree = "<group>";
+		};
+		FC6A6A3E29D35091007FC09B /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				FC6A6A3F29D350AE007FC09B /* ProjectView.swift */,
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,6 +521,7 @@
 				FC2EB32829B14CE1003F0362 /* HistoriqueUsersView.swift in Sources */,
 				FC503F0329C8C71800F0A2FA /* MediaPickerFilter.swift in Sources */,
 				FC503F1029C8C71900F0A2FA /* DocumentURL.swift in Sources */,
+				FC6A6A4029D350AE007FC09B /* ProjectView.swift in Sources */,
 				FC9325DE29AFF46100EAFCFA /* UserAchievementView.swift in Sources */,
 				FCC32E2429D2246900D0DCB2 /* ProjectModel.swift in Sources */,
 				FCE81FCA29B00CA400D9F330 /* AchievementDataModel.swift in Sources */,

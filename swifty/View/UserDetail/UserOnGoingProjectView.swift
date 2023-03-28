@@ -69,17 +69,14 @@ struct OnGoingProjectCardView: View {
                 } onSucces: { project in
                     self.project = project
                     showProject = true
-                    print("ca marche")
                 } onError: { error in
                     print(error)
-                    print("ca marche pas")
                 }
-
             }
         }
         .navigationDestination(isPresented: $showProject) {
-            VStack {
-                Text("ca marche")
+            if let project = project {
+                ProjectView(project: project)
             }
         }
     }
