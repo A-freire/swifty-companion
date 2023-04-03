@@ -22,29 +22,27 @@ struct UserView: View {
     var body: some View {
         if let user = user {
             ScrollView(showsIndicators: false) {
-                if let user = user {
-                    UserCardView(color: $color,
-                                 imageUrl: user.getUrlPicture(),
-                                 groups: user.groups,
-                                 title: user.getTitle(),
-                                 place: user.location,
-                                 lastActivity: user.updated_at,
-                                 level: user.getLevel(),
-                                 state: user.getBlackholeState(),
-                                 timer: user.getBlackHoleTime() ?? 0,
-                                 showPicture: $showPicture,
-                                 login: user.login)
-                        .padding(.bottom)
-                    UserOnGoingProjectView(projects: user.getOnGoingProject())
-                        .padding(.bottom)
-                    UserFinishedProjectsView(projects: user.getFinishedProject())
-                        .padding(.bottom)
-                    UserSkillsView(projects: user.getSkills(), color: $color)
-                        .padding(.bottom)
-                    UserAchievementView(userId: user.id,
-                                        achievements: user.achievements,
-                                        sortedListAchievement: $sortedListAchievement)
-                }
+                UserCardView(color: $color,
+                             imageUrl: user.getUrlPicture(),
+                             groups: user.groups,
+                             title: user.getTitle(),
+                             place: user.location,
+                             lastActivity: user.updated_at,
+                             level: user.getLevel(),
+                             state: user.getBlackholeState(),
+                             timer: user.getBlackHoleTime() ?? 0,
+                             showPicture: $showPicture,
+                             login: user.login)
+                    .padding(.bottom)
+                UserOnGoingProjectView(projects: user.getOnGoingProject())
+                    .padding(.bottom)
+                UserFinishedProjectsView(projects: user.getFinishedProject())
+                    .padding(.bottom)
+                UserSkillsView(projects: user.getSkills(), color: $color)
+                    .padding(.bottom)
+                UserAchievementView(userId: user.id,
+                                    achievements: user.achievements,
+                                    sortedListAchievement: $sortedListAchievement)
             }
             .toolbar(content: {
                 Menu(content: {

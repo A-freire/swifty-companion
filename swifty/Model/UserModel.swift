@@ -45,15 +45,15 @@ class User {
     }
 
     func getLevel() -> Double {
-        if let last = cursusUsers.last {
-            return last.level
+        if let cursus = cursusUsers.first(where: {$0.grade == "Learner" || $0.grade == "Member"}) {
+            return cursus.level
         }
         return 0
     }
 
     func getSkills() -> [Skills] {
-        if let last = cursusUsers.last {
-            return last.skills
+        if let cursus = cursusUsers.first(where: {$0.grade == "Learner" || $0.grade == "Member"}) {
+            return cursus.skills
         }
         return []
     }

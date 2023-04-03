@@ -15,6 +15,8 @@ struct FriendsView: View {
     @State var locations: [Location] = []
     @State var isLoading: Bool = false
     @State var isError: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var selectedFriend: [String: String]?
 
     var body: some View {
         VStack {
@@ -24,8 +26,8 @@ struct FriendsView: View {
                         FriendCardView(friend: friend, locations: $locations, isLoading: $isLoading, isError: $isError)
                             .onLongPressGesture {
                                 withAnimation {
-                                    friends.removeAll(where: {$0 == friend})
-                                    UserDefaults.standard.set(friends, forKey: "friends")
+                                    selectedFriend = friend
+                                    showAlert = true
                                 }
                             }
                     }
@@ -40,6 +42,19 @@ struct FriendsView: View {
             friends = UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []
             getLocation()
         }
+        .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Confirmation"),
+                        message: Text("Voulez-vous vraiment supprimer cet ami ?"),
+                        primaryButton: .destructive(Text("Supprimer")) {
+                            withAnimation {
+                                friends.removeAll(where: { $0 == selectedFriend })
+                                UserDefaults.standard.set(friends, forKey: "friends")
+                            }
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
     }
 
     func getLocation() {
