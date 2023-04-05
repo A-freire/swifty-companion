@@ -18,9 +18,11 @@ struct ProjectView: View {
                     .font(.title)
                 Text("\(project.final_mark ?? 0)")
                 Text(project.status)
-                ForEach(project.teams.reversed(), id: \.self) { team in
-                    ListProjectView(team: team)
-                        .padding()
+                VStack {
+                    ForEach(project.teams.reversed(), id: \.self) { team in
+                        ListProjectView(team: team)
+                            .padding()
+                    }
                 }
             }
         }
@@ -39,20 +41,27 @@ struct ListProjectView: View {
     @State var isOpen: Bool = false
 
     var body: some View {
-        HStack {
-            Text(team.name)
-            Spacer()
-            Text("\(team.final_mark ?? 0)")
-            Image(systemName: "chevron.up")
-                .rotationEffect(.degrees(isOpen == true ? 0 : 180))
-        }
-        .onTapGesture {
-            withAnimation {
-                isOpen.toggle()
+        VStack {
+            ZStack {
+                Color.gray
+                    .cornerRadius(15)
+                HStack {
+                    Text(team.name)
+                    Spacer()
+                    Text("\(team.final_mark ?? 0)")
+                    Image(systemName: "chevron.up")
+                        .rotationEffect(.degrees(isOpen == true ? 0 : 180))
+                }
+                .padding(10)
             }
-        }
-        if isOpen == true {
-            MatesView(mates: team.users, id: team.id)
+            .onTapGesture {
+                withAnimation {
+                    isOpen.toggle()
+                }
+            }
+            if isOpen == true {
+                MatesView(mates: team.users, id: team.id)
+            }
         }
     }
 }
