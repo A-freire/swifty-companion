@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC1422F029DC694500B116C6 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1422EF29DC694500B116C6 /* TeamModel.swift */; };
+		FC1422F229DC70CE00B116C6 /* TeamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1422F129DC70CE00B116C6 /* TeamService.swift */; };
+		FC1422F429DC726500B116C6 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1422F329DC726500B116C6 /* TeamManager.swift */; };
 		FC2EB32829B14CE1003F0362 /* HistoriqueUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2EB32729B14CE1003F0362 /* HistoriqueUsersView.swift */; };
 		FC3E7B5F29ACE7D500ED3A70 /* swiftyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */; };
 		FC3E7B6329ACE7D700ED3A70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC3E7B6229ACE7D700ED3A70 /* Assets.xcassets */; };
@@ -73,6 +76,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC1422EF29DC694500B116C6 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		FC1422F129DC70CE00B116C6 /* TeamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamService.swift; sourceTree = "<group>"; };
+		FC1422F329DC726500B116C6 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		FC2EB32729B14CE1003F0362 /* HistoriqueUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriqueUsersView.swift; sourceTree = "<group>"; };
 		FC3E7B5B29ACE7D500ED3A70 /* swifty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swifty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftyApp.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				FC503F1529C8CBFE00F0A2FA /* FriendsService.swift */,
 				FC9E344329C9EB5E000138F9 /* LocationsService.swift */,
 				FCC32E2529D22B9100D0DCB2 /* ProjectService.swift */,
+				FC1422F129DC70CE00B116C6 /* TeamService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 				FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */,
 				FC9E344129C9E944000138F9 /* LocationModel.swift */,
 				FCC32E2329D2246900D0DCB2 /* ProjectModel.swift */,
+				FC1422EF29DC694500B116C6 /* TeamModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 				FC503F1329C8CB5B00F0A2FA /* FriendsManager.swift */,
 				FC9E344529C9ECCC000138F9 /* LocationsManager.swift */,
 				FCC32E2729D235E800D0DCB2 /* ProjectManager.swift */,
+				FC1422F329DC726500B116C6 /* TeamManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -527,6 +536,7 @@
 				FCE81FCA29B00CA400D9F330 /* AchievementDataModel.swift in Sources */,
 				FC3E7BB829AEBD7400ED3A70 /* UserOnGoingProjectView.swift in Sources */,
 				FC503F1129C8C71900F0A2FA /* LivePhotoView.swift in Sources */,
+				FC1422F029DC694500B116C6 /* TeamModel.swift in Sources */,
 				FCC32E2629D22B9100D0DCB2 /* ProjectService.swift in Sources */,
 				FC503F0829C8C71800F0A2FA /* MediaPickerResult.swift in Sources */,
 				FC3E7BBA29AEC3EA00ED3A70 /* UserFinishedProjectsView.swift in Sources */,
@@ -551,6 +561,8 @@
 				FCC6999A29B4CC1A00C704E6 /* CampusUserModel.swift in Sources */,
 				FC5C4B0F29C1FE410009F4FD /* FriendsView.swift in Sources */,
 				FC3E7B8E29ACEC8B00ED3A70 /* UserSearchView.swift in Sources */,
+				FC1422F229DC70CE00B116C6 /* TeamService.swift in Sources */,
+				FC1422F429DC726500B116C6 /* TeamManager.swift in Sources */,
 				FC503EFE29C8C71800F0A2FA /* MediaPickerService.swift in Sources */,
 				FC503F0F29C8C71900F0A2FA /* PDFKitView.swift in Sources */,
 				FCE81FCC29B00F4300D9F330 /* UserAchievementManager.swift in Sources */,

@@ -109,20 +109,17 @@ class User {
         return projectName
     }
 
-    func getFinishedProject() -> [FinishedProject] {
-        var projectValidated: [FinishedProject] = []
+    func getFinishedProject() -> [ProjectUsers] {
+        var projectValidated: [ProjectUsers] = []
         projectsUsers.forEach { project in
             if project.status == "finished" {
-                if cursusUsers.last?.grade == "Learner" || cursusUsers.last?.grade == "Member" {
+// swiftlint:disable:next line_length
+                if cursusUsers.last?.grade != nil && (cursusUsers.last?.grade == "Learner" || cursusUsers.last?.grade == "Member") {
                     if !project.cursus_ids.isEmpty && project.cursus_ids[0] == 21 {
-                        projectValidated.append(FinishedProject(name: project.project.name,
-                                                                mark: project.final_mark ?? 0,
-                                                                time: project.marked_at ?? ""))
+                        projectValidated.append(project)
                     }
                 } else if cursusUsers.last?.grade == nil {
-                    projectValidated.append(FinishedProject(name: project.project.name,
-                                                            mark: project.final_mark ?? 0,
-                                                            time: project.marked_at ?? ""))
+                    projectValidated.append(project)
                 }
             }
         }
@@ -185,6 +182,7 @@ struct ProjectUsers: Codable, Hashable {
     let occurrence: Int
     let final_mark: Int?
     let status: String
+    let current_team_id: Int?
     let project: ProjectName
     let cursus_ids: [Int]
     let marked_at: String?
@@ -192,12 +190,6 @@ struct ProjectUsers: Codable, Hashable {
 
 struct ProjectName: Codable {
     let name: String
-}
-
-struct FinishedProject: Codable, Hashable {
-    var name: String
-    var mark: Int
-    var time: String
 }
 
 struct Achievement: Codable, Hashable {

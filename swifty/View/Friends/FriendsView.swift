@@ -62,7 +62,6 @@ struct FriendsView: View {
         isError = false
         LocationsManager.shared.getLocations { _ in
         } onSucces: { locations in
-        print("j'ai les locations")
             self.locations = locations
             isLoading = false
         } onError: { error in
