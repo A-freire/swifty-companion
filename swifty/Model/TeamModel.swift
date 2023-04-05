@@ -64,7 +64,13 @@ struct TeamResponse: Codable {
     }
 }
 
-struct ScaleTeam: Codable {
+struct ScaleTeam: Codable, Hashable {
+    static func == (lhs: ScaleTeam, rhs: ScaleTeam) -> Bool {
+        return lhs.id == rhs.id
+    }
+    func hash(into hasher: inout Hasher) {
+       hasher.combine(id)
+    }
     let id: Int
     let scaleId: Int
     let comment, feedback: String

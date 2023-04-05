@@ -64,10 +64,47 @@ struct MatesView: View {
     var body: some View {
         VStack {
             if let team = team {
-                Text(team.name)
                 HStack {
                     ForEach(mates, id: \.self) { mate in
                         Text(mate.login)
+                    }
+                }
+                if !team.scaleTeams.isEmpty {
+                    VStack {
+                        ForEach(team.scaleTeams, id: \.self) { correction in
+                            ZStack {
+                                Color.gray
+                                    .cornerRadius(15)
+                                VStack {
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text(correction.corrector.login)
+                                            Spacer()
+                                            Text("\(correction.finalMark)")
+                                        }
+                                        .padding(.vertical, 5)
+                                    }
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text("Comment:")
+                                            Spacer()
+                                        }
+                                        .padding(.vertical, 5)
+                                        Text(correction.comment)
+                                    }
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text("Feedback:")
+                                            Spacer()
+                                        }
+                                        .padding(.vertical, 5)
+                                        Text(correction.feedback)
+                                    }
+                                    .padding(.bottom, 5)
+                                }
+                                .padding(10)
+                            }
+                        }
                     }
                 }
             }
