@@ -62,6 +62,7 @@ struct TopBarNavigation: View {
     @State var showSearch: Bool = false
     @State var selection: Int = 0
     @State private var isDocumentPickerVisible = false
+    @State private var showIndex = true
     @StateObject var mediaPickerService = MediaPickerService()
 
     var body: some View {
@@ -81,6 +82,17 @@ struct TopBarNavigation: View {
         }
         .navigationTitle(selection == 0 ? "Search" : "Friends")
         .navigationBarTitleDisplayMode(.inline)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: showIndex == false ? .automatic : .never))
+        .onChange(of: selection) { _ in
+            withAnimation {
+                showIndex = false
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    showIndex = true
+                }
+            }
+        }
         .toolbar(content: {
             if selection == 1 {
                 Menu(content: {
