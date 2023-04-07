@@ -79,17 +79,28 @@ struct TopBarNavigation: View {
                         .resizable()
                 })
                 .tag(1)
+            WebView(urlString: "https://friends42.fr")
+                .edgesIgnoringSafeArea(.all)
+                .tabItem {
+                    Image(systemName: "location")
+                        .resizable()
+                }
+                .tag(2)
         }
         .navigationTitle(selection == 0 ? "Search" : "Friends")
         .navigationBarTitleDisplayMode(.inline)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: showIndex == false ? .automatic : .never))
-        .onChange(of: selection) { _ in
+        .onChange(of: selection) { value in
             withAnimation {
                 showIndex = false
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                withAnimation {
-                    showIndex = true
+            if value != 2 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation {
+                        if selection != 2 {
+                            showIndex = true
+                        }
+                    }
                 }
             }
         }
@@ -101,6 +112,9 @@ struct TopBarNavigation: View {
                     }
                     Button("download friends list") {
                         self.isDocumentPickerVisible.toggle()
+                    }
+                    Button("copy friends list") {
+                        copyToClipboard()
                     }
                 }, label: {
                     Text("...")
@@ -139,4 +153,8 @@ struct TopBarNavigation: View {
         }
     }
 
+    func copyToClipboard() {
+        var friends = UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []
+        UIPasteboard.general.string = friends.map({ $0.first?.key ?? "" }).joined(separator: ", ")
+    }
 }

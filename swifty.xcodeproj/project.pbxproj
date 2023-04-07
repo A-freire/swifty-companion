@@ -65,6 +65,7 @@
 		FC9E344229C9E944000138F9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344129C9E944000138F9 /* LocationModel.swift */; };
 		FC9E344429C9EB5E000138F9 /* LocationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344329C9EB5E000138F9 /* LocationsService.swift */; };
 		FC9E344629C9ECCC000138F9 /* LocationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E344529C9ECCC000138F9 /* LocationsManager.swift */; };
+		FCA8620929E0235C00B28FC1 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA8620829E0235C00B28FC1 /* WebView.swift */; };
 		FCC32E2429D2246900D0DCB2 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC32E2329D2246900D0DCB2 /* ProjectModel.swift */; };
 		FCC32E2629D22B9100D0DCB2 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC32E2529D22B9100D0DCB2 /* ProjectService.swift */; };
 		FCC32E2829D235E800D0DCB2 /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC32E2729D235E800D0DCB2 /* ProjectManager.swift */; };
@@ -134,6 +135,7 @@
 		FC9E344129C9E944000138F9 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		FC9E344329C9EB5E000138F9 /* LocationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsService.swift; sourceTree = "<group>"; };
 		FC9E344529C9ECCC000138F9 /* LocationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsManager.swift; sourceTree = "<group>"; };
+		FCA8620829E0235C00B28FC1 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		FCC32E2329D2246900D0DCB2 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		FCC32E2529D22B9100D0DCB2 /* ProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		FCC32E2729D235E800D0DCB2 /* ProjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		FC3E7B8A29ACEC2000ED3A70 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FCA8620729E0234300B28FC1 /* WebView */,
 				FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */,
 				FC3E7B8829ACE9CC00ED3A70 /* TokenAPIView.swift */,
 				FC2EB32629B14CBB003F0362 /* SearchView */,
@@ -411,6 +414,14 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		FCA8620729E0234300B28FC1 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				FCA8620829E0235C00B28FC1 /* WebView.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -523,6 +534,7 @@
 				FC503F0D29C8C71800F0A2FA /* PHPickerView.swift in Sources */,
 				FC503EFF29C8C71800F0A2FA /* Version.swift in Sources */,
 				FC503F0C29C8C71800F0A2FA /* UIDocumentPickerView.swift in Sources */,
+				FCA8620929E0235C00B28FC1 /* WebView.swift in Sources */,
 				FC9E344629C9ECCC000138F9 /* LocationsManager.swift in Sources */,
 				FC3E7BBE29AFC3F300ED3A70 /* CoaModel.swift in Sources */,
 				FC3E7B9A29AD1BB500ED3A70 /* Constante.swift in Sources */,
