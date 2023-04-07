@@ -211,12 +211,12 @@
 		FC3E7B8A29ACEC2000ED3A70 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FCA8620729E0234300B28FC1 /* WebView */,
 				FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */,
 				FC3E7B8829ACE9CC00ED3A70 /* TokenAPIView.swift */,
 				FC2EB32629B14CBB003F0362 /* SearchView */,
 				FC3E7BB129AE949600ED3A70 /* UserDetail */,
 				FC5C4B0D29C1FE1B0009F4FD /* Friends */,
+				FCA8620729E0234300B28FC1 /* WebView */,
 			);
 			path = View;
 			sourceTree = "<group>";

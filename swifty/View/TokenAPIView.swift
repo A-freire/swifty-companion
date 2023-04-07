@@ -87,7 +87,7 @@ struct TopBarNavigation: View {
                 }
                 .tag(2)
         }
-        .navigationTitle(selection == 0 ? "Search" : "Friends")
+        .navigationTitle(title())
         .navigationBarTitleDisplayMode(.inline)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: showIndex == false ? .automatic : .never))
         .onChange(of: selection) { value in
@@ -137,6 +137,19 @@ struct TopBarNavigation: View {
                     print(error)
                 }
             }
+        }
+    }
+
+    func title() -> String {
+        switch selection {
+        case 0:
+            return "Search"
+        case 1:
+            return "Friends"
+        case 2:
+            return "Cluster"
+        default:
+            return "Unknown"
         }
     }
 
