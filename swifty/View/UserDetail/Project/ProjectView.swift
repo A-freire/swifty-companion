@@ -70,12 +70,19 @@ struct MatesView: View {
     var mates: [TeamUser]
     var id: Int
     @State var team: Team?
+    @State var user: User?
+    @State var showUser: Bool = false
+
     var body: some View {
         VStack {
             if let team = team {
                 HStack {
                     ForEach(mates, id: \.self) { mate in
-                        Text(mate.login)
+                        Button {
+                            getUser(login: mate.login)
+                        } label: {
+                            Text(mate.login)
+                        }
                     }
                 }
                 if !team.scaleTeams.isEmpty {
@@ -87,7 +94,11 @@ struct MatesView: View {
                                 VStack {
                                     VStack(alignment: .leading) {
                                         HStack {
-                                            Text(correction.corrector.login)
+                                            Button {
+                                                getUser(login: correction.corrector.login)
+                                            } label: {
+                                                Text(correction.corrector.login)
+                                            }
                                             Spacer()
                                             Text("\(correction.finalMark)")
                                         }
@@ -126,6 +137,22 @@ struct MatesView: View {
             } onError: { error in
                 print(error)
             }
+        }
+        .navigationDestination(isPresented: $showUser, destination: {
+            UserView(user: $user)
+        })
+    }
+
+    func getUser(login: String) {
+        UserManager.shared.getUser(login: login) { _ in
+        } onSucces: { user in
+//            generator.notificationOccurred(.success)
+            self.user = user
+            self.showUser = true
+        } onError: { error in
+//            generator.notificationOccurred(.error)
+//            self.isError = true
+            print(error)
         }
     }
 }

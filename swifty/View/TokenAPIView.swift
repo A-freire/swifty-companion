@@ -167,7 +167,7 @@ struct TopBarNavigation: View {
     }
 
     func copyToClipboard() {
-        var friends = UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []
+        let friends = UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []
         UIPasteboard.general.string = friends.map({ $0.first?.key ?? "" }).joined(separator: ", ")
     }
 }
