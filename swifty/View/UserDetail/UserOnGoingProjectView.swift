@@ -70,6 +70,7 @@ struct OnGoingProjectCardView: View {
                     self.project = project
                     showProject = true
                 } onError: { error in
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
                     print(error)
                 }
             }

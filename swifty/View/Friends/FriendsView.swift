@@ -40,21 +40,20 @@ struct FriendsView: View {
         }
         .task {
             friends = UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []
-            getLocation()
+//            getLocation()
         }
         .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Confirmation"),
-                        message: Text("Voulez-vous vraiment supprimer cet ami ?"),
-                        primaryButton: .destructive(Text("Supprimer")) {
-                            withAnimation {
-                                friends.removeAll(where: { $0 == selectedFriend })
-                                UserDefaults.standard.set(friends, forKey: "friends")
-                            }
-                        },
-                        secondaryButton: .cancel()
-                    )
-                }
+            Alert(title: Text("Confirmation"),
+                  message: Text("Voulez-vous vraiment supprimer cet ami ?"),
+                  primaryButton: .destructive(Text("Supprimer")) {
+                    withAnimation {
+                        friends.removeAll(where: { $0 == selectedFriend })
+                        UserDefaults.standard.set(friends, forKey: "friends")
+                    }
+                  },
+                  secondaryButton: .cancel()
+            )
+        }
     }
 
     func getLocation() {
@@ -66,6 +65,7 @@ struct FriendsView: View {
             isLoading = false
         } onError: { error in
             print(error)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             isLoading = true
             isError = true
         }
@@ -110,13 +110,13 @@ struct FriendCardView: View {
     }
 
     func getUser(login: String) {
-        guard isLoading == false else {return}
         UserManager.shared.getUser(login: login) { _ in
         } onSucces: { user in
             self.user = user
             showUser = true
         } onError: { error in
             print(error)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }
 }

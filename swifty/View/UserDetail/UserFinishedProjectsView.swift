@@ -72,7 +72,6 @@ struct FinishedProjectCardView: View {
                         Text("\(project.final_mark ?? 0)")
                     }
                     .padding(10)
-//                        .foregroundColor(project.mark >= 100 ? Color(hex: "#339966") : Color(hex: "#990000"))
                 }
                 // true
                 // 339966 = matmorva
@@ -92,6 +91,7 @@ struct FinishedProjectCardView: View {
                 self.projectInfo = project
                 showProject = true
             } onError: { error in
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
                 print(error)
             }
         }

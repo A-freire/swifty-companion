@@ -17,9 +17,9 @@ struct UserSearchView: View {
     @State var isLoading: Bool = false
     @State var showUser: Bool = false
     @State var user: User?
-    @State var histo: [[String: String]]? = UserDefaults.standard.object(forKey: "historique") as? [[String: String]]
+// swiftlint:disable:next line_length
+    @State var histo: [[String: String]] = UserDefaults.standard.object(forKey: "historique") as? [[String: String]] ?? []
     @State var isError: Bool = false
-    let generator = UINotificationFeedbackGenerator()
 
     var cleanLogin: String {
         let allowedCharacters = CharacterSet(charactersIn: "qwertyuiopasdfghjklzxcvbnm-")
@@ -88,14 +88,14 @@ struct UserSearchView: View {
     }
 
     func historique(login: String, image: String) {
-        if histo == nil {
+        if histo.isEmpty {
             var dic: [[String: String]] = []
             dic.append([login: image])
             histo = dic
             UserDefaults.standard.set(dic, forKey: "historique")
         } else {
-            guard !histo!.contains([login: image]) else {return}
-            var dic: [[String: String]] = histo!
+            guard !histo.contains([login: image]) else {return}
+            var dic: [[String: String]] = histo
             dic.append([login: image])
             histo = dic
             UserDefaults.standard.set(dic, forKey: "historique")
@@ -105,12 +105,12 @@ struct UserSearchView: View {
     func getUser(login: String) {
         UserManager.shared.getUser(login: login) { _ in
         } onSucces: { user in
-            generator.notificationOccurred(.success)
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
             loginIsFocused = false
             self.user = user
             self.showUser = true
         } onError: { error in
-            generator.notificationOccurred(.error)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             self.isError = true
             print(error)
         }
@@ -125,7 +125,7 @@ struct SearchUserByCampusView: View {
 
     var cleanLogin: String {
         let allowedCharacters = CharacterSet(charactersIn: "qwertyuiopasdfghjklzxcvbnm-")
-            return login.lowercased().components(separatedBy: allowedCharacters.inverted).joined(separator: "")
+        return login.lowercased().components(separatedBy: allowedCharacters.inverted).joined(separator: "")
     }
 
     var body: some View {

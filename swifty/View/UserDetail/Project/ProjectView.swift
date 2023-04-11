@@ -31,6 +31,7 @@ struct ProjectView: View {
             } onSucces: { project in
                 self.project = project
             } onError: { error in
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
                 print(error)
             }
         }
@@ -133,9 +134,9 @@ struct MatesView: View {
             TeamManager.shared.getTeam(idTeam: id) { _ in
             } onSucces: { team in
                 self.team = team
-                print("j'ai la team")
             } onError: { error in
                 print(error)
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
             }
         }
         .navigationDestination(isPresented: $showUser, destination: {
@@ -146,12 +147,10 @@ struct MatesView: View {
     func getUser(login: String) {
         UserManager.shared.getUser(login: login) { _ in
         } onSucces: { user in
-//            generator.notificationOccurred(.success)
             self.user = user
             self.showUser = true
         } onError: { error in
-//            generator.notificationOccurred(.error)
-//            self.isError = true
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
             print(error)
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct HistoriqueView: View {
-    @Binding var histo: [[String: String]]?
+    @Binding var histo: [[String: String]]
     @Binding var showUser: Bool
     @Binding var user: User?
 
@@ -21,11 +21,11 @@ struct HistoriqueView: View {
                 Spacer()
             }
             ScrollView(showsIndicators: false) {
-                ForEach(Array(histo ?? []), id: \.self) { list in
+                ForEach(Array(histo), id: \.self) { list in
                     HistoriqueCardView(showUser: $showUser, user: $user, list: list)
                         .onLongPressGesture {
                             withAnimation {
-                                histo?.removeAll(where: {$0 == list})
+                                histo.removeAll(where: {$0 == list})
                                 UserDefaults.standard.set(histo, forKey: "historique")
                             }
                         }
@@ -71,6 +71,7 @@ struct HistoriqueCardView: View {
             self.showUser = true
         } onError: { error in
             print(error)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }
 }

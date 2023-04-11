@@ -14,8 +14,11 @@ struct TokenAPIView: View {
     @State var showSearch: Bool = false
     @State var selection: Int = 0
     @State var isLoading: Bool = false
+    @State var intra: Bool = false
+
     var body: some View {
         VStack {
+            Spacer()
             VStack {
                 TextField("UID", text: $uid)
                     .padding([.vertical], 5)
@@ -27,13 +30,7 @@ struct TokenAPIView: View {
                 isLoading = true
                 UserDefaults.standard.set(uid, forKey: "uid")
                 UserDefaults.standard.set(secret, forKey: "secret")
-                CredManager.shared.connexion { loading in
-                    isLoading = loading
-                } onSucces: {
-                    showSearch = true
-                } onError: { error in
-                    print(error)
-                }
+                connexion()
             }, label: {
                 Text("Connexion")
             })
@@ -42,6 +39,12 @@ struct TokenAPIView: View {
             .navigationDestination(isPresented: $showSearch) {
                 TopBarNavigation()
             }
+            Spacer()
+            Button("Intra") {
+                intra = true
+            }
+            .padding()
+            .disabled(isLoading)
         }
         .navigationTitle("UID/SECRET")
         .navigationBarTitleDisplayMode(.inline)
@@ -54,6 +57,20 @@ struct TokenAPIView: View {
                 }
                 .frame(height: 1000)
             }
+        }
+        .sheet(isPresented: $intra) {
+            WebView(urlString: "https://profile.intra.42.fr")
+        }
+    }
+
+    func connexion() {
+        CredManager.shared.connexion { loading in
+            isLoading = loading
+        } onSucces: {
+            showSearch = true
+        } onError: { error in
+            print(error)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }
 }
@@ -130,12 +147,7 @@ struct TopBarNavigation: View {
         .mediaPickerSheet(service: mediaPickerService) {} onDismiss: {}
         .onReceive(mediaPickerService.$documentUrls) { documentUrl in
             if let file = documentUrl.last?.absoluteString {
-                FriendsManager.shared.getFriendsList(fileurl: file) { _ in
-                } onSucces: { friends in
-                    UserDefaults.standard.set(friends, forKey: "friends")
-                } onError: { error in
-                    print(error)
-                }
+                setFriendList(file: file)
             }
         }
     }
@@ -157,7 +169,7 @@ struct TopBarNavigation: View {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dictionaryArray, options: .prettyPrinted)
             let tempDirectory = FileManager.default.temporaryDirectory
-            let tempFileURL = tempDirectory.appendingPathComponent("output.json")
+            let tempFileURL = tempDirectory.appendingPathComponent("swiftyFreinds.json")
             try jsonData.write(to: tempFileURL)
             return tempFileURL
         } catch {
@@ -169,5 +181,14 @@ struct TopBarNavigation: View {
     func copyToClipboard() {
         let friends = UserDefaults.standard.object(forKey: "friends") as? [[String: String]] ?? []
         UIPasteboard.general.string = friends.map({ $0.first?.key ?? "" }).joined(separator: ", ")
+    }
+
+    func setFriendList(file: String) {
+        FriendsManager.shared.getFriendsList(fileurl: file) { _ in
+        } onSucces: { friends in
+            UserDefaults.standard.set(friends, forKey: "friends")
+        } onError: { error in
+            print(error)
+        }
     }
 }
