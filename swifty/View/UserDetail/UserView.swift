@@ -18,6 +18,9 @@ struct UserView: View {
     @State var achievementGood: Bool = false
     @State var colorGood: Bool = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
 
     var body: some View {
         if let user = user {
@@ -52,6 +55,9 @@ struct UserView: View {
                     Button("amis") {
                         addFriend(login: user.login, image: user.image)
                     }
+                    Button("dl photo") {
+                        downloadAndSaveImage(url: user.image)
+                    }
                 }, label: {
                     Text("...")
                 })
@@ -72,6 +78,20 @@ struct UserView: View {
                 }
             }
         }
+    }
+    func downloadAndSaveImage(url: String) {
+        guard let url = URL(string: url) else { return }
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            if let data = data, let image = UIImage(data: data) {
+                UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+            } else {
+                DispatchQueue.main.async {
+                    alertTitle = "Erreur"
+                    alertMessage = "Impossible de télécharger l'image"
+                    showAlert = true
+                }
+            }
+        }.resume()
     }
 
     func getColor() {
