@@ -12,7 +12,7 @@ import UIKit
 struct UserSearchView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
-    @FocusState private var loginIsFocused: Bool
+    @FocusState var loginIsFocused: Bool
     @State var login: String = ""
     @State var isLoading: Bool = false
     @State var showUser: Bool = false

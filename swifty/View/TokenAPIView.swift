@@ -81,10 +81,11 @@ struct TopBarNavigation: View {
     @State private var isDocumentPickerVisible = false
     @State private var showIndex = true
     @StateObject var mediaPickerService = MediaPickerService()
+    @FocusState var loginIsFocused: Bool
 
     var body: some View {
         TabView(selection: $selection) {
-            UserSearchView()
+            UserSearchView(loginIsFocused: _loginIsFocused)
                 .tabItem({
                     Image(systemName: "person.fill.questionmark")
                         .resizable()
@@ -110,6 +111,7 @@ struct TopBarNavigation: View {
         .onChange(of: selection) { value in
             withAnimation {
                 showIndex = false
+                loginIsFocused = false
             }
             if value != 2 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

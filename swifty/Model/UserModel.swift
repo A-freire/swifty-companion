@@ -59,30 +59,34 @@ class User {
     }
 
     func getBlackholeState() -> BlackHoleState {
-        if let last = cursusUsers.last {
-            if last.blackholed_at != nil {
-                let dateFormat = DateFormatter()
-                dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                if let blackholeTime = getBlackHoleTime() {
-                    return blackholeTime > 0 ? .learner : .blackhole
+        let status = cursusUsers.map { cursus in
+            if cursus.cursus.id == 21 {
+                if cursus.blackholed_at != nil {
+                    let dateFormat = DateFormatter()
+                    dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                    if let blackholeTime = getBlackHoleTime() {
+                        return blackholeTime > 0 ? BlackHoleState.learner : .blackhole
+                    }
                 }
+                return .member
             }
-            return .member
+            return .blackhole
         }
-        return .blackhole
+        return status.filter { $0 != BlackHoleState.blackhole }.first ?? .blackhole
     }
 
     func getBlackHoleTime() -> Int? {
-        if let last = cursusUsers.last {
-            if last.blackholed_at != nil {
-                let dateFormat = DateFormatter()
-                dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-// swiftlint:disable:next line_length
-                return Int(((dateFormat.date(from: last.blackholed_at!)?.millisecondSince1978 ?? 0) - Date.now.millisecondSince1978) / 86400000)
+        return cursusUsers.map { cursus in
+            if cursus.cursus.id == 21 {
+                if cursus.blackholed_at != nil {
+                    let dateFormat = DateFormatter()
+                    dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    // swiftlint:disable:next line_length
+                    return Int(((dateFormat.date(from: cursus.blackholed_at!)?.millisecondSince1978 ?? 0) - Date.now.millisecondSince1978) / 86400000)
+                }
             }
             return 0
-        }
-        return 0
+        }.filter { $0 != 0 }.first
     }
 
     func getTitle() -> String {
@@ -152,6 +156,11 @@ struct CursusUsers: Codable {
     let skills: [Skills]
     let blackholed_at: String?
     let id: Int
+    let cursus: CursusInfo
+}
+
+struct CursusInfo: Codable {
+    let id: Int
 }
 
 struct Skills: Codable, Hashable {
@@ -203,6 +212,6 @@ struct Achievement: Codable, Hashable {
     let nbr_of_success: Int?
 
     func getImageURL() -> URL {
-        return URL(string: BASE_URL+image)!
+        return URL(string: BASE_URL + (image ?? ""))!
     }
 }
