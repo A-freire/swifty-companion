@@ -199,7 +199,7 @@ struct Achievement: Codable, Hashable {
     let tier: String
     let kind: String
     let visible: Bool
-    let image: String
+    let image: String?
     let nbr_of_success: Int?
 
     func getImageURL() -> URL {
