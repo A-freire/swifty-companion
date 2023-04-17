@@ -97,3 +97,28 @@ extension String {
         return ""
     }
 }
+
+extension StringOuCorrector {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        if let corrector = try? container.decode(Corrector.self) {
+            self = .corrector(corrector)
+        } else if let string = try? container.decode(String.self) {
+            self = .string(string)
+        } else {
+            throw DecodingError.dataCorruptedError(in: container, debugDescription: "Données non conformes")
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+
+        switch self {
+        case .corrector(let corrector):
+            try container.encode(corrector)
+        case .string(let string):
+            try container.encode(string)
+        }
+    }
+}

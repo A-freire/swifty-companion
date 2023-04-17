@@ -73,17 +73,18 @@ struct ScaleTeam: Codable, Hashable {
     }
     let id: Int
     let scaleId: Int
-    let comment, feedback: String
-    let finalMark: Int
+    let comment, feedback: String?
+    let finalMark: Int?
     let flag: Flag
-    let corrector: Corrector
+    let corrector: StringOuCorrector
 
     enum CodingKeys: String, CodingKey {
         case id
         case scaleId = "scale_id"
         case comment, feedback
         case finalMark = "final_mark"
-        case flag, corrector
+        case flag
+        case corrector
     }
 }
 

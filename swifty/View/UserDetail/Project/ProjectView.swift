@@ -96,12 +96,13 @@ struct MatesView: View {
                                     VStack(alignment: .leading) {
                                         HStack {
                                             Button {
-                                                getUser(login: correction.corrector.login)
+                                                getUser(login: getlogin(correction: correction))
                                             } label: {
-                                                Text(correction.corrector.login)
+                                                Text(getlogin(correction: correction))
                                             }
+                                            .disabled(realLogin(correction: correction))
                                             Spacer()
-                                            Text("\(correction.finalMark)")
+                                            Text("\(correction.finalMark ?? 0)")
                                         }
                                         .padding(.vertical, 5)
                                     }
@@ -111,7 +112,7 @@ struct MatesView: View {
                                             Spacer()
                                         }
                                         .padding(.vertical, 5)
-                                        Text(correction.comment)
+                                        Text(correction.comment ?? "")
                                     }
                                     VStack(alignment: .leading) {
                                         HStack {
@@ -119,7 +120,7 @@ struct MatesView: View {
                                             Spacer()
                                         }
                                         .padding(.vertical, 5)
-                                        Text(correction.feedback)
+                                        Text(correction.feedback ?? "")
                                     }
                                     .padding(.bottom, 5)
                                 }
@@ -153,5 +154,21 @@ struct MatesView: View {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
             print(error)
         }
+    }
+
+    func getlogin(correction: ScaleTeam) -> String {
+        switch correction.corrector {
+        case .string(let string):
+                return string
+        case .corrector(let corrector):
+                return corrector.login
+        }
+    }
+
+    func realLogin(correction: ScaleTeam) -> Bool {
+        if getlogin(correction: correction) == "invisible" {
+            return true
+        }
+        return false
     }
 }

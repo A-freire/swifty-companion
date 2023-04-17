@@ -10,3 +10,8 @@ import Foundation
 enum BlackHoleState: Int {
     case member, blackhole, learner
 }
+
+enum StringOuCorrector: Codable {
+    case string(String)
+    case corrector(Corrector)
+}
