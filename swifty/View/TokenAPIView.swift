@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Kingfisher
 struct TokenAPIView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var uid: String = UserDefaults.standard.string(forKey: "uid") ?? ""
@@ -15,6 +15,7 @@ struct TokenAPIView: View {
     @State var selection: Int = 0
     @State var isLoading: Bool = false
     @State var intra: Bool = false
+    let cache = KingfisherManager.shared.cache
 
     var body: some View {
         VStack {
@@ -40,11 +41,22 @@ struct TokenAPIView: View {
                 TopBarNavigation()
             }
             Spacer()
-            Button("Intra") {
-                intra = true
+            HStack {
+                Spacer()
+                Button("Intra") {
+                    intra = true
+                }
+                .padding()
+                .disabled(isLoading)
+                Spacer()
+                Button("Reset Cache") {
+                    cache.clearMemoryCache()
+                    cache.clearDiskCache { print("Cache disque effacé") }
+                    cache.cleanExpiredDiskCache { print("Cache disque expiré nettoyé") }
+                }
+                .padding()
+                Spacer()
             }
-            .padding()
-            .disabled(isLoading)
         }
         .navigationTitle("UID/SECRET")
         .navigationBarTitleDisplayMode(.inline)
