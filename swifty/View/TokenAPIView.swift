@@ -116,6 +116,18 @@ struct TopBarNavigation: View {
                         .resizable()
                 }
                 .tag(2)
+            PiscineView()
+                .tabItem({
+                    Image(systemName: "figure.pool.swim")
+                        .resizable()
+                })
+                .tag(3)
+            PoulainView()
+                .tabItem({
+                    Image(systemName: "figure.equestrian.sports")
+                        .resizable()
+                })
+                .tag(4)
         }
         .navigationTitle(title())
         .navigationBarTitleDisplayMode(.inline)
@@ -151,6 +163,11 @@ struct TopBarNavigation: View {
                     Text("...")
                 })
             }
+            if selection == 3 {
+                Button("upload list") {
+                    mediaPickerService.present(.document(type: .json))
+                }
+            }
         })
         .sheet(isPresented: $isDocumentPickerVisible) {
 // swiftlint:disable:next line_length
@@ -160,8 +177,14 @@ struct TopBarNavigation: View {
         }
         .mediaPickerSheet(service: mediaPickerService) {} onDismiss: {}
         .onReceive(mediaPickerService.$documentUrls) { documentUrl in
-            if let file = documentUrl.last?.absoluteString {
-                setFriendList(file: file)
+            if selection == 1 {
+                if let file = documentUrl.last?.absoluteString {
+                    setFriendList(file: file)
+                }
+            } else if selection == 3 {
+                if let file = documentUrl.last?.absoluteString {
+                    setPiscinerList(file: file)
+                }
             }
         }
     }
@@ -174,6 +197,10 @@ struct TopBarNavigation: View {
             return "Friends"
         case 2:
             return "Cluster"
+        case 3:
+            return "Pisciners"
+        case 4:
+            return "Poulain"
         default:
             return "Unknown"
         }
@@ -201,6 +228,19 @@ struct TopBarNavigation: View {
         FriendsManager.shared.getFriendsList(fileurl: file) { _ in
         } onSucces: { friends in
             UserDefaults.standard.set(friends, forKey: "friends")
+        } onError: { error in
+            print(error)
+        }
+    }
+
+    func setPiscinerList(file: String) {
+        PiscinerManager.shared.getPiscinerList(fileurl: file) { _ in
+        } onSucces: { pisciner in
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(pisciner) {
+                let defaults = UserDefaults.standard
+                defaults.set(encoded, forKey: "pisciner")
+            }
         } onError: { error in
             print(error)
         }

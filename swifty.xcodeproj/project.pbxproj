@@ -74,6 +74,11 @@
 		FCE81FC829B0025A00D9F330 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = FCE81FC729B0025A00D9F330 /* SDWebImageSVGCoder */; };
 		FCE81FCA29B00CA400D9F330 /* AchievementDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE81FC929B00CA400D9F330 /* AchievementDataModel.swift */; };
 		FCE81FCC29B00F4300D9F330 /* UserAchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */; };
+		FCF60F942A39E40000043273 /* PiscineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF60F932A39E40000043273 /* PiscineView.swift */; };
+		FCF60F982A3B508500043273 /* PiscinerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF60F972A3B508500043273 /* PiscinerManager.swift */; };
+		FCF60F9A2A3B511A00043273 /* PiscinerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF60F992A3B511A00043273 /* PiscinerService.swift */; };
+		FCF60F9C2A3B53A600043273 /* PiscinerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF60F9B2A3B53A600043273 /* PiscinerModel.swift */; };
+		FCF60F9E2A3CB05100043273 /* PoulainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF60F9D2A3CB05100043273 /* PoulainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +147,11 @@
 		FCC6999929B4CC1A00C704E6 /* CampusUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusUserModel.swift; sourceTree = "<group>"; };
 		FCE81FC929B00CA400D9F330 /* AchievementDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDataModel.swift; sourceTree = "<group>"; };
 		FCE81FCB29B00F4300D9F330 /* UserAchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAchievementManager.swift; sourceTree = "<group>"; };
+		FCF60F932A39E40000043273 /* PiscineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiscineView.swift; sourceTree = "<group>"; };
+		FCF60F972A3B508500043273 /* PiscinerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiscinerManager.swift; sourceTree = "<group>"; };
+		FCF60F992A3B511A00043273 /* PiscinerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiscinerService.swift; sourceTree = "<group>"; };
+		FCF60F9B2A3B53A600043273 /* PiscinerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiscinerModel.swift; sourceTree = "<group>"; };
+		FCF60F9D2A3CB05100043273 /* PoulainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoulainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +223,7 @@
 			children = (
 				FC3E7B5E29ACE7D500ED3A70 /* swiftyApp.swift */,
 				FC3E7B8829ACE9CC00ED3A70 /* TokenAPIView.swift */,
+				FCF60F922A39E3C800043273 /* Piscine */,
 				FC2EB32629B14CBB003F0362 /* SearchView */,
 				FC3E7BB129AE949600ED3A70 /* UserDetail */,
 				FC5C4B0D29C1FE1B0009F4FD /* Friends */,
@@ -229,6 +240,7 @@
 				FC9E344329C9EB5E000138F9 /* LocationsService.swift */,
 				FCC32E2529D22B9100D0DCB2 /* ProjectService.swift */,
 				FC1422F129DC70CE00B116C6 /* TeamService.swift */,
+				FCF60F992A3B511A00043273 /* PiscinerService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -244,6 +256,7 @@
 				FC9E344129C9E944000138F9 /* LocationModel.swift */,
 				FCC32E2329D2246900D0DCB2 /* ProjectModel.swift */,
 				FC1422EF29DC694500B116C6 /* TeamModel.swift */,
+				FCF60F9B2A3B53A600043273 /* PiscinerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +271,7 @@
 				FC9E344529C9ECCC000138F9 /* LocationsManager.swift */,
 				FCC32E2729D235E800D0DCB2 /* ProjectManager.swift */,
 				FC1422F329DC726500B116C6 /* TeamManager.swift */,
+				FCF60F972A3B508500043273 /* PiscinerManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -422,6 +436,15 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		FCF60F922A39E3C800043273 /* Piscine */ = {
+			isa = PBXGroup;
+			children = (
+				FCF60F932A39E40000043273 /* PiscineView.swift */,
+				FCF60F9D2A3CB05100043273 /* PoulainView.swift */,
+			);
+			path = Piscine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -539,6 +562,7 @@
 				FC3E7BBE29AFC3F300ED3A70 /* CoaModel.swift in Sources */,
 				FC3E7B9A29AD1BB500ED3A70 /* Constante.swift in Sources */,
 				FC3E7BB029AE855200ED3A70 /* UserManager.swift in Sources */,
+				FCF60F942A39E40000043273 /* PiscineView.swift in Sources */,
 				FC2EB32829B14CE1003F0362 /* HistoriqueUsersView.swift in Sources */,
 				FC503F0329C8C71800F0A2FA /* MediaPickerFilter.swift in Sources */,
 				FC503F1029C8C71900F0A2FA /* DocumentURL.swift in Sources */,
@@ -547,16 +571,20 @@
 				FCC32E2429D2246900D0DCB2 /* ProjectModel.swift in Sources */,
 				FCE81FCA29B00CA400D9F330 /* AchievementDataModel.swift in Sources */,
 				FC3E7BB829AEBD7400ED3A70 /* UserOnGoingProjectView.swift in Sources */,
+				FCF60F982A3B508500043273 /* PiscinerManager.swift in Sources */,
 				FC503F1129C8C71900F0A2FA /* LivePhotoView.swift in Sources */,
 				FC1422F029DC694500B116C6 /* TeamModel.swift in Sources */,
 				FCC32E2629D22B9100D0DCB2 /* ProjectService.swift in Sources */,
 				FC503F0829C8C71800F0A2FA /* MediaPickerResult.swift in Sources */,
 				FC3E7BBA29AEC3EA00ED3A70 /* UserFinishedProjectsView.swift in Sources */,
 				FC3E7B8929ACE9CC00ED3A70 /* TokenAPIView.swift in Sources */,
+				FCF60F9C2A3B53A600043273 /* PiscinerModel.swift in Sources */,
 				FC503F0929C8C71800F0A2FA /* MediaPickerViewModifier.swift in Sources */,
 				FC9E344229C9E944000138F9 /* LocationModel.swift in Sources */,
 				FC503F0A29C8C71800F0A2FA /* MediaPickerView.swift in Sources */,
 				FC503F0129C8C71800F0A2FA /* MediaPickerType.swift in Sources */,
+				FCF60F9E2A3CB05100043273 /* PoulainView.swift in Sources */,
+				FCF60F9A2A3B511A00043273 /* PiscinerService.swift in Sources */,
 				FC3E7BAC29AE847500ED3A70 /* Extension.swift in Sources */,
 				FC3E7B9729AD155D00ED3A70 /* CredentialManager.swift in Sources */,
 				FC503F0429C8C71800F0A2FA /* MediaPickerDocumentView.swift in Sources */,

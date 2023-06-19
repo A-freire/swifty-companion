@@ -55,6 +55,9 @@ struct UserView: View {
                     Button("amis") {
                         addFriend(login: user.login, image: user.image)
                     }
+                    Button("poulain") {
+                        setPoulain(login: user.login, image: user.image)
+                    }
                     Button("dl photo") {
                         downloadAndSaveImage(url: user.image)
                     }
@@ -129,6 +132,14 @@ struct UserView: View {
         guard !tab.contains([login: image]) else {return}
         tab.append([login: image])
         UserDefaults.standard.set(tab, forKey: "friends")
+    }
+
+    func setPoulain(login: String, image: String) {
+        var poulain = UserDefaults.standard.object(forKey: "poulain") as? [String: String] ?? [:]
+        guard poulain[login] == nil else { return }
+        poulain[login] = image
+        UserDefaults.standard.set(poulain, forKey: "poulain")
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
 }
 
