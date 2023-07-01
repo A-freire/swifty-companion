@@ -15,9 +15,9 @@ class PiscinerManager {
     init() {}
 
     public func getPiscinerList(fileurl: String,
-                               onLoading: @escaping (Bool) -> Void,
-                               onSucces: @escaping ([PiscinerModel]) -> Void,
-                               onError: @escaping (String) -> Void ) {
+                                onLoading: @escaping (Bool) -> Void,
+                                onSucces: @escaping ([PiscinerModel]) -> Void,
+                                onError: @escaping (String) -> Void ) {
         onLoading(true)
         PiscinerService.shared.getPiscinerList(fileurl: fileurl)
             .sink { completion in

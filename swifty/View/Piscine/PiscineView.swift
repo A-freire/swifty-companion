@@ -14,34 +14,34 @@ struct PiscineView: View {
     @State var pisciner: [PiscinerModel] = []
     @State var poulain: [String: String] = UserDefaults.standard.object(forKey: "poulain") as? [String: String] ?? [:]
 
-    var sortedPisciner: [PiscinerModel] {
-        return pisciner.sorted(by: { $0.level > $1.level })
-    }
     var body: some View {
         ScrollView {
-            ForEach(Array(sortedPisciner.enumerated()), id: \.element.id) { index, model in
-                ZStack {
-                    Color.gray
-                        .cornerRadius(15)
-                    HStack {
-                        Text("\(index+1)") // Ajout du classement ici.
-                            .padding(.trailing, 10)
-                        KFImage(URL(string: model.image_link ?? NORMINET))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 42, height: 42)
-                            .clipShape(Circle())
-                        Text(model.id)
-                        Spacer()
-                        Text(String(format: "%.2f", model.level))
+            LazyVStack {
+            ForEach(Array(pisciner.enumerated()), id: \.element.id) { index, model in
+                    ZStack {
+                        Color.gray
+                            .cornerRadius(15)
+                        HStack {
+                            Text("\(index+1)") // Ajout du classement ici.
+                                .padding(.trailing, 10)
+                            KFImage(URL(string: model.image_link ?? NORMINET))
+                                .cacheOriginalImage(true)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 42, height: 42)
+                                .clipShape(Circle())
+                            Text(model.id)
+                            Spacer()
+                            Text(String(format: "%.2f", model.level))
+                        }
+                        .padding(10)
                     }
-                    .padding(10)
-                }
-                .onTapGesture {
-                    getUser(login: model.id)
-                }
-                .onLongPressGesture {
-                    setPoulain(login: model.id, image: model.image_link ?? NORMINET)
+                    .onTapGesture {
+                        getUser(login: model.id)
+                    }
+                    .onLongPressGesture {
+                        setPoulain(login: model.id, image: model.image_link ?? NORMINET)
+                    }
                 }
             }
         }
@@ -49,8 +49,10 @@ struct PiscineView: View {
         .refreshable {
             setPisciner()
         }
-        .onAppear {
-            setPisciner()
+        .task {
+            if pisciner.isEmpty {
+                setPisciner()
+            }
         }
         .navigationDestination(isPresented: $showUser, destination: {
             UserView(user: $user)
@@ -89,46 +91,3 @@ struct PiscineView: View {
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
 }
-
-//struct PiscineCardView: View {
-//    @State var showUser: Bool
-//    @State var user: User?
-//    var list: [String: String]
-//
-//    var body: some View {
-//        ForEach(Array(list), id: \.key) { login, image in
-//            ZStack {
-//                Color.gray
-//                    .cornerRadius(15)
-//                HStack {
-//                    KFImage(URL(string: image))
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(width: 42, height: 42)
-//                        .clipShape(Circle())
-//                    Text(login)
-//                    Spacer()
-//                }
-//                .padding(10)
-//            }
-//            .onTapGesture {
-//                getUser(login: login)
-//            }
-//        }
-//        .navigationDestination(isPresented: $showUser, destination: {
-//            UserView(user: $user)
-//        })
-//    }
-//
-//    func getUser(login: String) {
-//        UserManager.shared.getUser(login: login) { _ in
-//        } onSucces: { user in
-//            UIApplication.shared.inputViewController?.dismissKeyboard()
-//            self.user = user
-//            self.showUser = true
-//        } onError: { error in
-//            print(error)
-//            UINotificationFeedbackGenerator().notificationOccurred(.error)
-//        }
-//    }
-//}

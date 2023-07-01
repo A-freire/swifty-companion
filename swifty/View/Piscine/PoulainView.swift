@@ -43,7 +43,9 @@ struct PoulainView: View {
         }
         .padding(.horizontal)
         .onAppear {
-            poulain = UserDefaults.standard.object(forKey: "poulain") as? [String: String] ?? [:]
+            if poulain.isEmpty {
+                poulain = UserDefaults.standard.object(forKey: "poulain") as? [String: String] ?? [:]
+            }
         }
         .navigationDestination(isPresented: $showUser, destination: {
             UserView(user: $user)
