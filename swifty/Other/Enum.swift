@@ -8,7 +8,7 @@
 import Foundation
 
 enum BlackHoleState: Int {
-    case member, blackhole, learner
+    case member, blackhole, learner, novice, event
 }
 
 enum StringOuCorrector: Codable {

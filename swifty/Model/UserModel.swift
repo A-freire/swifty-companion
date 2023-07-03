@@ -48,6 +48,9 @@ class User {
         if let cursus = cursusUsers.first(where: {$0.grade == "Learner" || $0.grade == "Member"}) {
             return cursus.level
         }
+        if let cursus = cursusUsers.first(where: {$0.cursus.id == 9}) {
+            return cursus.level
+        }
         return 0
     }
 
@@ -70,9 +73,30 @@ class User {
                 }
                 return .member
             }
+            if cursus.cursus.id == 9 {
+                return .novice
+            }
+            if cursus.cursus.id == 67 {
+                return .event
+            }
             return .blackhole
         }
-        return status.filter { $0 != BlackHoleState.blackhole }.first ?? .blackhole
+        let state = status.filter({ $0 != BlackHoleState.event })
+        if state.contains(where: { $0 == BlackHoleState.blackhole }) {
+            return .blackhole
+        } else if state.contains(where: { $0 == BlackHoleState.learner }) {
+            return .learner
+        } else if state.contains(where: { $0 == BlackHoleState.member }) {
+            return .member
+        } else {
+            return .novice
+        }
+//        var state = status.filter({ $0 != BlackHoleState.blackhole })
+//        if state.count == 1 {
+//            return state.first ?? .blackhole
+//        }
+//        state = state.filter({ $0 != BlackHoleState.novice })
+//        return state.first ?? .blackhole
     }
 
     func getBlackHoleTime() -> Int? {

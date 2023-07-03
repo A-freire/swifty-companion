@@ -130,6 +130,10 @@ struct BlackHole: View {
 
     var message: String? {
         switch state {
+        case .event:
+            return nil
+        case .novice:
+            return ""
         case .learner:
             return nil
         case .blackhole:
