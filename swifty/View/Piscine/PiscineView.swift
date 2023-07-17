@@ -28,7 +28,7 @@ struct PiscineView: View {
                                 .cacheOriginalImage(true)
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 42, height: 42)
+                                .frame(width: 63, height: 63)
                                 .clipShape(Circle())
                             Text(model.id)
                             Spacer()

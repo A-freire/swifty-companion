@@ -10,7 +10,6 @@ import Kingfisher
 
 struct PoulainView: View {
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-
     @State var poulain: [String: String] = [:]
     @State var showUser: Bool = false
     @State var user: User?
@@ -46,9 +45,7 @@ struct PoulainView: View {
         }
         .padding(.horizontal)
         .onAppear {
-            if poulain.isEmpty {
-                poulain = UserDefaults.standard.object(forKey: "poulain") as? [String: String] ?? [:]
-            }
+            poulain = UserDefaults.standard.object(forKey: "poulain") as? [String: String] ?? [:]
         }
         .navigationDestination(isPresented: $showUser, destination: {
             UserView(user: $user)
