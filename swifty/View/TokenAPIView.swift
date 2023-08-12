@@ -103,12 +103,18 @@ struct TopBarNavigation: View {
                         .resizable()
                 })
                 .tag(0)
-            FriendsView()
+            PoulainView()
                 .tabItem({
-                    Image(systemName: "person.3.fill")
+                    Image(systemName: "figure.equestrian.sports")
                         .resizable()
                 })
-                .tag(1)
+                .tag(4)
+            PiscineView()
+                .tabItem({
+                    Image(systemName: "figure.pool.swim")
+                        .resizable()
+                })
+                .tag(3)
             WebView(urlString: "https://friends42.fr")
                 .edgesIgnoringSafeArea(.all)
                 .tabItem {
@@ -116,18 +122,12 @@ struct TopBarNavigation: View {
                         .resizable()
                 }
                 .tag(2)
-            PiscineView()
+            FriendsView()
                 .tabItem({
-                    Image(systemName: "figure.pool.swim")
+                    Image(systemName: "person.3.fill")
                         .resizable()
                 })
-                .tag(3)
-            PoulainView()
-                .tabItem({
-                    Image(systemName: "figure.equestrian.sports")
-                        .resizable()
-                })
-                .tag(4)
+                .tag(1)
         }
         .navigationTitle(title())
         .navigationBarTitleDisplayMode(.inline)

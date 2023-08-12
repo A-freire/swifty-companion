@@ -15,9 +15,6 @@ struct UserView: View {
     @State var sortedListAchievement: [AchievementData] = []
     @State var isLoading: Bool = false
     @State var errorCount: Int = 0
-    @State var achievementGood: Bool = false
-    @State var colorGood: Bool = false
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -65,14 +62,12 @@ struct UserView: View {
                     Text("...")
                 })
             })
-            .onReceive(timer, perform: { _ in
-                getAchievement()
+            .refreshable {
+                getUser(login: user.login)
+            }
+            .task {
                 getColor()
-            })
-            .onAppear(perform: {
-                getAchievement()
-                getColor()
-            })
+            }
             .navigationTitle(user.login)
             .padding(.horizontal)
             .overlay {
@@ -98,33 +93,25 @@ struct UserView: View {
     }
 
     func getColor() {
-        if color == "#FFFFFF" && errorCount < 5 && colorGood == false {
             UserManager.shared.getColorCoa(login: user?.login ?? "") { loading in
                 isLoading = loading
             } onSucces: { color in
                 self.color = color
-                errorCount = 0
-                colorGood = true
+//                usleep(500000) need for no error in correction else balek
+                getAchievement()
             } onError: { error in
                 print(error)
-                errorCount += 1
             }
-        }
     }
 
     func getAchievement() {
-        if sortedListAchievement.isEmpty && errorCount < 5 && achievementGood == false {
             UserAchievementManager.shared.getAchievementsList(userId: user?.id ?? 0) { loading in
                 isLoading = loading
             } onSucces: { datas in
                 self.sortedListAchievement = datas
-                errorCount = 0
-                achievementGood = true
             } onError: { error in
                 print(error)
-                errorCount += 1
             }
-        }
     }
 
     func addFriend(login: String, image: String) {
@@ -140,6 +127,17 @@ struct UserView: View {
         poulain[login] = image
         UserDefaults.standard.set(poulain, forKey: "poulain")
         UINotificationFeedbackGenerator().notificationOccurred(.success)
+    }
+
+    func getUser(login: String) {
+        UserManager.shared.getUser(login: login) { _ in
+        } onSucces: { user in
+//            UINotificationFeedbackGenerator().notificationOccurred(.success)
+            self.user = user
+        } onError: { error in
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            print(error)
+        }
     }
 }
 
