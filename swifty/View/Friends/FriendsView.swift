@@ -15,8 +15,8 @@ struct FriendsView: View {
     @State var locations: [Location] = []
     @State var isLoading: Bool = false
     @State var isError: Bool = false
-    @State private var showAlert: Bool = false
-    @State private var selectedFriend: [String: String]?
+    @State var showAlert: Bool = false
+    @State var selectedFriend: [String: String]?
 
     var body: some View {
         VStack {

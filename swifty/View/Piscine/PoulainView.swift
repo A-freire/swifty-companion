@@ -13,9 +13,13 @@ struct PoulainView: View {
     @State var poulain: [String: String] = [:]
     @State var showUser: Bool = false
     @State var user: User?
+    @State var locations: [Location] = []
+    @State var isLoading: Bool = false
+    @State var isError: Bool = false
+    @State var showAlert: Bool = false
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(Array(poulain), id: \.key) { login, image in
                     ZStack {
@@ -28,6 +32,9 @@ struct PoulainView: View {
                                 .frame(width: 84, height: 84)
                                 .clipShape(Circle())
                             Text(login)
+                            Text(locations.first(where: { $0.user.login == login })?.host ?? "unavailable")
+                                .foregroundColor(isError == true ? .red : .primary )
+                                .redacted(reason: isLoading == true ? .placeholder : [])
                         }
                         .padding(10)
                     }
@@ -36,14 +43,28 @@ struct PoulainView: View {
                     }
                     .onLongPressGesture {
                         withAnimation {
-                            poulain.removeValue(forKey: login)
-                            UserDefaults.standard.set(poulain, forKey: "poulain")
+                            showAlert = true
                         }
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Confirmation"),
+                              message: Text("Voulez-vous vraiment supprimer cet ami ?"),
+                              primaryButton: .destructive(Text("Supprimer")) {
+                                withAnimation {
+                                    poulain.removeValue(forKey: login)
+                                    UserDefaults.standard.set(poulain, forKey: "poulain")
+                                }
+                              },
+                              secondaryButton: .cancel()
+                        )
                     }
                 }
             }
         }
         .padding(.horizontal)
+        .refreshable {
+            getLocation()
+        }
         .onAppear {
             poulain = UserDefaults.standard.object(forKey: "poulain") as? [String: String] ?? [:]
         }
@@ -62,5 +83,18 @@ struct PoulainView: View {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }
-
+    func getLocation() {
+        isLoading = true
+        isError = false
+        LocationsManager.shared.getLocations { _ in
+        } onSucces: { locations in
+            self.locations = locations
+            isLoading = false
+        } onError: { error in
+            print(error)
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+            isLoading = true
+            isError = true
+        }
+    }
 }
