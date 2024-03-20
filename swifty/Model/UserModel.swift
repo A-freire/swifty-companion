@@ -91,27 +91,9 @@ class User {
         }
     }
 
-//    func getBlackHoleTime() -> Int? {
-//        return cursusUsers.map { cursus in
-//            if cursus.cursus.id == 21 {
-//                if cursus.blackholed_at != nil {
-//                    let dateFormat = DateFormatter()
-//                    dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//    // swiftlint:disable:next line_length
-//                    return Int(((dateFormat.date(from: cursus.blackholed_at!)?.millisecondSince1978 ?? 0) - Date.now.millisecondSince1978) / 86400000)
-//                }
-//            }
-//            return 0
-//        }.filter { $0 != 0 }.first
-//    }
-    
     func getBlackHoleTime() -> Int? {
-        // Définir le format de date une seule fois pour éviter la redondance.
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        
-        // Utiliser compactMap pour filtrer et transformer en une seule opération.
-        // La fonction cherche le premier cursus correspondant avec un 'blackholed_at' non nil et calcule la différence en jours.
         let timeDifferences = cursusUsers.compactMap { cursus -> Int? in
             print("hallo",cursus.cursus.id)
             guard cursus.cursus.id == 21, let blackholedAt = cursus.blackholed_at,
@@ -121,8 +103,6 @@ class User {
             let timeDifference = Int((blackholeDate.timeIntervalSince1970 - Date().timeIntervalSince1970) / 86400)
             return timeDifference > 0 ? timeDifference : nil
         }
-        
-        // Retourner le premier élément du tableau filtré, s'il existe.
         return timeDifferences.first
     }
 
