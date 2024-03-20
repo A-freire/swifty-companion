@@ -77,6 +77,7 @@ struct UserView: View {
             }
         }
     }
+
     func downloadAndSaveImage(url: String) {
         guard let url = URL(string: url) else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in

@@ -103,18 +103,18 @@ struct TopBarNavigation: View {
                         .resizable()
                 })
                 .tag(0)
-            PoulainView()
-                .tabItem({
-                    Image(systemName: "figure.equestrian.sports")
-                        .resizable()
-                })
-                .tag(4)
-            PiscineView()
-                .tabItem({
-                    Image(systemName: "figure.pool.swim")
-                        .resizable()
-                })
-                .tag(3)
+//            PoulainView()
+//                .tabItem({
+//                    Image(systemName: "figure.equestrian.sports")
+//                        .resizable()
+//                })
+//                .tag(4)
+//            PiscineView()
+//                .tabItem({
+//                    Image(systemName: "figure.pool.swim")
+//                        .resizable()
+//                })
+//                .tag(3)
             WebView(urlString: "https://friends42.fr")
                 .edgesIgnoringSafeArea(.all)
                 .tabItem {
